@@ -8,44 +8,45 @@ interface RecipeData {
   ingredients: string[];
   instructions: string[];
   benefits: string[];
-  brainBoostBenefits: { title: string; description: string }[];
+  healthBenefits: { title: string; description: string }[];
   storage: string;
 }
 
 const recipeData: RecipeData = {
-  title: "Brain Boost Recipe",
-  subtitle: "Exotic Mango Mind Purée",
-  time: "15 min",
+  title: "First Foods Recipe",
+  subtitle: "Golden Sweet Potato & Apple Purée",
+  time: "20 min",
   age: "6+ months",
   ingredients: [
-    "1 ripe mango, peeled and cubed (vitamin A + antioxidants)",
-    "2 tbsp fresh passion fruit pulp (vitamin C + fiber)",
-    "2 tbsp coconut cream (healthy MCT fats)",
-    "1 tsp ground flaxseed (omega-3 for brain)",
-    "Tiny pinch of vanilla (optional)"
+    "1 medium sweet potato (vitamin A + fiber)",
+    "1 ripe apple, peeled & cored (natural sweetness + vitamin C)",
+    "2 tbsp breast milk or formula (familiar taste)",
+    "Tiny pinch of cinnamon (optional, aids digestion)",
+    "1 tsp unsalted butter or olive oil (healthy fats)"
   ],
   instructions: [
-    "Cut ripe mango into small cubes",
-    "Scoop fresh passion fruit pulp (strain seeds if desired)",
-    "Add mango cubes to blender",
-    "Add passion fruit and coconut cream",
+    "Peel and dice sweet potato into small cubes",
+    "Peel, core and dice the apple",
+    "Steam or boil until fork-tender (15 min)",
+    "Drain and let cool slightly",
+    "Add to blender with milk and butter",
     "Blend until silky smooth",
-    "Stir in ground flaxseed and vanilla",
-    "Serve immediately at room temperature"
+    "Add cinnamon and blend briefly",
+    "Serve warm — babies love it!"
   ],
   benefits: [
-    "Sweet tropical flavor - like a vacation in a bowl!",
-    "Vibrant golden color attracts baby's eyes",
-    "Ultra-smooth, silky texture from ripe mango",
-    "No cooking - fresh and full of enzymes"
+    "Naturally sweet - no added sugar needed!",
+    "Golden-orange color attracts baby's eyes",
+    "Silky smooth texture is gentle on new eaters",
+    "Warm comfort food perfect for first meals"
   ],
-  brainBoostBenefits: [
-    { title: "Omega-3 (ALA)", description: "Neural development" },
-    { title: "Vitamin A", description: "Brain cell growth & vision" },
-    { title: "MCT Fats", description: "Quick brain energy" },
-    { title: "Vitamin C", description: "Neuron protection" }
+  healthBenefits: [
+    { title: "Vitamin A", description: "Healthy eyes & immune system" },
+    { title: "Fiber", description: "Gentle digestion support" },
+    { title: "Beta-Carotene", description: "Powerful antioxidant" },
+    { title: "Vitamin C", description: "Immunity & iron absorption" }
   ],
-  storage: "Best fresh! Fridge: 24h. Freezer: 1 month in ice cube trays."
+  storage: "Fridge: 3 days. Freezer: 2 months in ice cube trays."
 };
 
 export const generateRecipePdf = () => {
@@ -71,20 +72,20 @@ export const generateRecipePdf = () => {
   doc.setFillColor(245, 158, 11); // amber-500
   doc.circle(12, 38, 10, "F");
 
-  // Small brain icon circle
+  // Small heart icon circle
   doc.setFillColor(217, 119, 6); // amber-600
   doc.circle(pageWidth / 2, 10, 6, "F");
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("B", pageWidth / 2, 12, { align: "center" });
+  doc.text("♡", pageWidth / 2, 12, { align: "center" });
 
   // Title
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
   doc.setTextColor(217, 119, 6); // amber-600
   y = 22;
-  doc.text("BRAIN BOOST RECIPE", pageWidth / 2, y, { align: "center" });
+  doc.text("FIRST FOODS RECIPE", pageWidth / 2, y, { align: "center" });
 
   doc.setFontSize(18);
   doc.setTextColor(55, 65, 81); // gray-700
@@ -95,7 +96,7 @@ export const generateRecipePdf = () => {
   doc.setFontSize(9);
   doc.setTextColor(107, 114, 128);
   y += 7;
-  doc.text(recipeData.time + " • No cooking • " + recipeData.age, pageWidth / 2, y, { align: "center" });
+  doc.text(recipeData.time + " • Easy cook • " + recipeData.age, pageWidth / 2, y, { align: "center" });
 
   y = 48;
 
@@ -103,7 +104,7 @@ export const generateRecipePdf = () => {
   doc.setFillColor(254, 243, 199);
   doc.roundedRect(margin, y, contentWidth, 12, 2, 2, "F");
   
-  const benefitLabels = ["Brain Power", "Vitamin Rich", "Omega-3"];
+  const benefitLabels = ["Vitamin A", "Fiber Rich", "Beta-Carotene"];
   const benefitWidth = contentWidth / 3;
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
@@ -214,40 +215,40 @@ export const generateRecipePdf = () => {
 
   y += 33;
 
-  // Brain Boost Benefits Section
+  // Health Benefits Section
   doc.setFillColor(255, 237, 213); // orange-100
   doc.roundedRect(margin, y, contentWidth, 22, 3, 3, "F");
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
   doc.setTextColor(55, 65, 81);
-  doc.text("Brain Boost Benefits", margin + 5, y + 7);
+  doc.text("🧡 Health Benefits", margin + 5, y + 7);
 
   doc.setFontSize(8);
-  const brainColWidth = contentWidth / 2 - 5;
-  let brainY = y + 13;
+  const healthColWidth = contentWidth / 2 - 5;
+  let healthY = y + 13;
   
-  recipeData.brainBoostBenefits.slice(0, 2).forEach((benefit) => {
+  recipeData.healthBenefits.slice(0, 2).forEach((benefit) => {
     doc.setFont("helvetica", "bold");
     doc.setTextColor(180, 83, 9);
-    doc.text(benefit.title + ": ", margin + 5, brainY);
+    doc.text(benefit.title + ": ", margin + 5, healthY);
     const titleWidth = doc.getTextWidth(benefit.title + ": ");
     doc.setFont("helvetica", "normal");
     doc.setTextColor(75, 85, 99);
-    doc.text(benefit.description, margin + 5 + titleWidth, brainY);
-    brainY += 5;
+    doc.text(benefit.description, margin + 5 + titleWidth, healthY);
+    healthY += 5;
   });
   
-  brainY = y + 13;
-  recipeData.brainBoostBenefits.slice(2).forEach((benefit) => {
+  healthY = y + 13;
+  recipeData.healthBenefits.slice(2).forEach((benefit) => {
     doc.setFont("helvetica", "bold");
     doc.setTextColor(180, 83, 9);
-    doc.text(benefit.title + ": ", margin + brainColWidth + 10, brainY);
+    doc.text(benefit.title + ": ", margin + healthColWidth + 10, healthY);
     const titleWidth = doc.getTextWidth(benefit.title + ": ");
     doc.setFont("helvetica", "normal");
     doc.setTextColor(75, 85, 99);
-    doc.text(benefit.description, margin + brainColWidth + 10 + titleWidth, brainY);
-    brainY += 5;
+    doc.text(benefit.description, margin + healthColWidth + 10 + titleWidth, healthY);
+    healthY += 5;
   });
 
   y += 27;
@@ -324,7 +325,7 @@ export const generateRecipePdf = () => {
   doc.text("Made with love by BabyBites | babybitespage.lovable.app", pageWidth / 2, pageHeight - 5, { align: "center" });
 
   // Download
-  doc.save("exotic-mango-mind-puree.pdf");
+  doc.save("golden-sweet-potato-apple-puree.pdf");
 };
 
 export const useRecipePdf = () => {

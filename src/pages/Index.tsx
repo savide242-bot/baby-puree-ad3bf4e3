@@ -1,7 +1,7 @@
-import recipeImage from "@/assets/recipe-exotic-mango-puree.jpg";
+import recipeImage from "@/assets/recipe-sweet-potato-apple.jpg";
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Sun, Leaf, Download } from "lucide-react";
+import { Check, Clock, Eye, Leaf, Heart, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRecipePdf } from "@/hooks/useRecipePdf";
 
@@ -14,18 +14,18 @@ const Index = () => {
         <div className="w-full">
           <img 
             src={recipeImage} 
-            alt="Exotic Mango Mind Purée - Brain Development Recipe" 
+            alt="Golden Sweet Potato & Apple Purée - First Foods Recipe" 
             className="w-full h-auto object-cover"
           />
         </div>
         <div className="px-4 py-4 bg-amber-50">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">Brain Boost Recipe</p>
+          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">First Foods Recipe</p>
           <h1 className="text-lg font-bold text-foreground leading-tight mb-1">
-            Exotic Mango Mind Purée
+            Golden Sweet Potato & Apple Purée
           </h1>
           <p className="text-xs text-muted-foreground flex items-center gap-2">
             <Clock className="w-3 h-3" />
-            15 min • No cooking • 6+ months
+            20 min • Easy cook • 6+ months
           </p>
         </div>
       </section>
@@ -34,16 +34,16 @@ const Index = () => {
       <section className="px-4 py-4">
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Brain className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Brain Power</p>
-          </div>
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Sun className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Vitamin Rich</p>
+            <Eye className="w-4 h-4 mx-auto text-amber-600 mb-1" />
+            <p className="text-[9px] text-amber-700 font-medium">Vitamin A</p>
           </div>
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
             <Leaf className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Omega-3</p>
+            <p className="text-[9px] text-amber-700 font-medium">Fiber Rich</p>
+          </div>
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
+            <Heart className="w-4 h-4 mx-auto text-amber-600 mb-1" />
+            <p className="text-[9px] text-amber-700 font-medium">Beta-Carotene</p>
           </div>
         </div>
       </section>
@@ -53,11 +53,11 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Ingredients</h2>
         <ul className="space-y-1.5">
           {[
-            "1 ripe mango, peeled and cubed (vitamin A + antioxidants)",
-            "2 tbsp fresh passion fruit pulp (vitamin C + fiber)",
-            "2 tbsp coconut cream (healthy MCT fats)",
-            "1 tsp ground flaxseed (omega-3 for brain)",
-            "Tiny pinch of vanilla (optional, for aroma)"
+            "1 medium sweet potato (vitamin A + fiber)",
+            "1 ripe apple, peeled & cored (natural sweetness + vitamin C)",
+            "2 tbsp breast milk or formula (familiar taste + nutrition)",
+            "Tiny pinch of cinnamon (optional, aids digestion)",
+            "1 tsp unsalted butter or olive oil (healthy fats for brain)"
           ].map((item, i) => (
             <li key={i} className="flex items-center gap-2 text-xs text-foreground">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
@@ -72,13 +72,14 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Instructions</h2>
         <ol className="space-y-2">
           {[
-            "Cut the ripe mango into small cubes, discarding the pit and skin",
-            "Scoop out the fresh passion fruit pulp (strain seeds for smoother texture if desired)",
-            "Add mango cubes to a blender or food processor",
-            "Add passion fruit pulp and coconut cream",
+            "Peel and dice sweet potato into small cubes",
+            "Peel, core and dice the apple into similar pieces",
+            "Steam or boil until fork-tender (about 15 minutes)",
+            "Drain and let cool slightly",
+            "Add to blender with milk and butter",
             "Blend until silky smooth and creamy",
-            "Stir in ground flaxseed and tiny pinch of vanilla if using",
-            "Serve immediately at room temperature — babies love the tropical taste!"
+            "Add cinnamon and blend briefly to combine",
+            "Serve warm — babies love the golden color!"
           ].map((step, i) => (
             <li key={i} className="flex gap-2 text-xs text-foreground">
               <span className="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
@@ -95,10 +96,10 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Why Babies Love It</h2>
         <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-3 space-y-1.5 border border-amber-100">
           {[
-            "Sweet tropical flavor — like a vacation in a bowl!",
-            "Vibrant golden color attracts curious little eyes",
-            "Ultra-smooth, silky texture from ripe mango",
-            "No cooking required — fresh and full of enzymes"
+            "Naturally sweet taste — no added sugar needed!",
+            "Beautiful golden-orange color attracts curious eyes",
+            "Silky smooth texture is gentle on new eaters",
+            "Warm comfort food perfect for first meals"
           ].map((benefit, i) => (
             <p key={i} className="flex items-center gap-2 text-[11px] text-foreground">
               <Check className="w-3 h-3 text-amber-600 flex-shrink-0" />
@@ -108,15 +109,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Brain Boost Benefits */}
+      {/* Health Benefits */}
       <section className="px-4 py-3">
-        <h2 className="text-sm font-bold text-foreground mb-2">🧠 Brain Boost Benefits</h2>
+        <h2 className="text-sm font-bold text-foreground mb-2">🧡 Health Benefits</h2>
         <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg p-3 border border-amber-200">
           <ul className="space-y-2 text-[11px] text-foreground">
-            <li><strong>Omega-3 (ALA)</strong> — Flaxseed provides essential fatty acids for neural development</li>
-            <li><strong>Vitamin A</strong> — Mango supports healthy brain cell growth and vision</li>
-            <li><strong>MCT Fats</strong> — Coconut cream provides quick energy for the developing brain</li>
-            <li><strong>Vitamin C</strong> — Passion fruit protects neurons and boosts iron absorption</li>
+            <li><strong>Vitamin A</strong> — Essential for healthy eyes, skin and immune system</li>
+            <li><strong>Fiber</strong> — Supports gentle digestion and regular bowel movements</li>
+            <li><strong>Beta-Carotene</strong> — Powerful antioxidant that protects growing cells</li>
+            <li><strong>Vitamin C</strong> — Apple adds immunity boost and iron absorption</li>
+            <li><strong>Complex Carbs</strong> — Provides sustained energy for active babies</li>
           </ul>
         </div>
       </section>
@@ -125,7 +127,7 @@ const Index = () => {
       <section className="px-4 py-3">
         <h2 className="text-sm font-bold text-foreground mb-1">Storage</h2>
         <p className="text-[11px] text-muted-foreground">
-          Best served fresh! Refrigerate in an airtight container for up to 24 hours. Freezer-friendly: store in silicone ice cube trays for up to 1 month — thaw in fridge and stir well before serving.
+          Refrigerate in an airtight container for up to 3 days. Freeze in ice cube trays for up to 2 months — thaw in fridge overnight and warm gently before serving.
         </p>
       </section>
 
@@ -244,7 +246,7 @@ const Index = () => {
       {/* App Promo Section */}
       <section className="px-4 py-6 bg-gradient-to-b from-amber-50 to-orange-100">
         <div className="text-center mb-4">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">Want More Brain Boost Recipes?</p>
+          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">Want More Healthy Recipes?</p>
           <h2 className="text-base font-bold text-foreground leading-tight">
             Get 300+ Recipes Like This
           </h2>
