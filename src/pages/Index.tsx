@@ -246,7 +246,7 @@ const Index = () => {
 
         <div className="text-center mb-4">
           <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">
-            Join 50,000+ Happy Moms
+            Join 1,000+ Happy Moms
           </p>
           <h2 className="text-xl font-extrabold text-foreground leading-tight">
             Stop Stressing About<br/>What to Feed Your Baby
@@ -261,7 +261,7 @@ const Index = () => {
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
           ))}
-          <span className="text-[11px] text-foreground/70 ml-1 font-medium">4.9/5 — 12,000+ reviews</span>
+          <span className="text-[11px] text-foreground/70 ml-1 font-medium">4.9/5 — 1,000+ reviews</span>
         </div>
 
         {/* App Screenshots */}

@@ -287,7 +287,7 @@ export const generateRecipePdf = () => {
 
   doc.setFontSize(9);
   doc.setTextColor(55, 65, 81);
-  doc.text("Join 50,000+ moms — 300+ recipes, meal plans & food scanner.", pageWidth / 2, y + 18, { align: "center" });
+  doc.text("Join 1,000+ moms — 300+ recipes, meal plans & food scanner.", pageWidth / 2, y + 18, { align: "center" });
 
   // CTA Button
   const buttonWidth = 90;
