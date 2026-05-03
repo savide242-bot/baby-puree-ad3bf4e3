@@ -1,7 +1,7 @@
 import recipeImage from "@/assets/recipe-avocado-banana.jpg";
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Leaf, Heart, Download, Star, Sparkles, ShieldCheck, Zap } from "lucide-react";
+import { Check, Clock, Brain, Leaf, Heart, Download, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRecipePdf } from "@/hooks/useRecipePdf";
 
