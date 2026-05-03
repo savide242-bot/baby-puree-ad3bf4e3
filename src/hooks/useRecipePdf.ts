@@ -14,39 +14,36 @@ interface RecipeData {
 
 const recipeData: RecipeData = {
   title: "First Foods Recipe",
-  subtitle: "Golden Sweet Potato & Apple Purée",
-  time: "20 min",
+  subtitle: "Creamy Avocado & Banana Brain-Boost Purée",
+  time: "5 min",
   age: "6+ months",
   ingredients: [
-    "1 medium sweet potato (vitamin A + fiber)",
-    "1 ripe apple, peeled & cored (natural sweetness + vitamin C)",
-    "2 tbsp breast milk or formula (familiar taste)",
-    "Tiny pinch of cinnamon (optional, aids digestion)",
-    "1 tsp unsalted butter or olive oil (healthy fats)"
+    "1/2 ripe avocado (healthy fats for brain)",
+    "1/2 ripe banana (potassium + natural sweetness)",
+    "1-2 tbsp breast milk or formula (creamy texture)",
+    "Tiny squeeze of lemon (optional, keeps color fresh)"
   ],
   instructions: [
-    "Peel and dice sweet potato into small cubes",
-    "Peel, core and dice the apple",
-    "Steam or boil until fork-tender (15 min)",
-    "Drain and let cool slightly",
-    "Add to blender with milk and butter",
-    "Blend until silky smooth",
-    "Add cinnamon and blend briefly",
-    "Serve warm — babies love it!"
+    "Scoop the ripe avocado flesh into a bowl",
+    "Peel and slice the banana on top",
+    "Add a small squeeze of lemon",
+    "Mash with a fork or blend until silky smooth",
+    "Add breast milk or formula slowly until creamy",
+    "Serve fresh and watch baby smile!"
   ],
   benefits: [
-    "Naturally sweet - no added sugar needed!",
-    "Golden-orange color attracts baby's eyes",
-    "Silky smooth texture is gentle on new eaters",
-    "Warm comfort food perfect for first meals"
+    "Buttery smooth texture babies love!",
+    "Naturally sweet — zero added sugar",
+    "Ready in 5 minutes, no cooking needed",
+    "Perfect creamy first food for tiny tummies"
   ],
   healthBenefits: [
-    { title: "Vitamin A", description: "Healthy eyes & immune system" },
-    { title: "Fiber", description: "Gentle digestion support" },
-    { title: "Beta-Carotene", description: "Powerful antioxidant" },
-    { title: "Vitamin C", description: "Immunity & iron absorption" }
+    { title: "Healthy Fats", description: "Brain-building omega fats" },
+    { title: "Potassium", description: "Heart & muscle support" },
+    { title: "Fiber", description: "Gentle smooth digestion" },
+    { title: "Folate", description: "Rapid cell development" }
   ],
-  storage: "Fridge: 3 days. Freezer: 2 months in ice cube trays."
+  storage: "Best served fresh. Fridge: 24h with lemon. Not for freezing."
 };
 
 export const generateRecipePdf = () => {
@@ -104,7 +101,7 @@ export const generateRecipePdf = () => {
   doc.setFillColor(254, 243, 199);
   doc.roundedRect(margin, y, contentWidth, 12, 2, 2, "F");
   
-  const benefitLabels = ["Vitamin A", "Fiber Rich", "Beta-Carotene"];
+  const benefitLabels = ["Brain Dev", "Healthy Fats", "Potassium"];
   const benefitWidth = contentWidth / 3;
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
@@ -286,17 +283,17 @@ export const generateRecipePdf = () => {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(180, 83, 9);
-  doc.text("Loved this recipe?", pageWidth / 2, y + 10, { align: "center" });
+  doc.text("Stop Stressing About Baby Meals!", pageWidth / 2, y + 10, { align: "center" });
 
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setTextColor(55, 65, 81);
-  doc.text("Get 300+ recipes in the best baby nutrition app!", pageWidth / 2, y + 18, { align: "center" });
+  doc.text("Join 50,000+ moms — 300+ recipes, meal plans & food scanner.", pageWidth / 2, y + 18, { align: "center" });
 
   // CTA Button
-  const buttonWidth = 70;
-  const buttonHeight = 10;
+  const buttonWidth = 90;
+  const buttonHeight = 11;
   const buttonX = (pageWidth - buttonWidth) / 2;
-  const buttonY = y + 26;
+  const buttonY = y + 24;
 
   // Button shadow
   doc.setFillColor(217, 119, 6);
@@ -308,9 +305,15 @@ export const generateRecipePdf = () => {
 
   // Button text
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.setTextColor(255, 255, 255);
-  doc.text("LEARN MORE >>", pageWidth / 2, buttonY + 7, { align: "center" });
+  doc.text("GET INSTANT ACCESS - FREE", pageWidth / 2, buttonY + 7.5, { align: "center" });
+
+  // Risk reversal
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7);
+  doc.setTextColor(107, 114, 128);
+  doc.text("100% free to try - no credit card required", pageWidth / 2, buttonY + 16, { align: "center" });
 
   // Clickable links
   doc.link(buttonX, buttonY, buttonWidth, buttonHeight, { url: "https://babybitespage.lovable.app/" });
@@ -325,7 +328,7 @@ export const generateRecipePdf = () => {
   doc.text("Made with love by BabyBites | babybitespage.lovable.app", pageWidth / 2, pageHeight - 5, { align: "center" });
 
   // Download
-  doc.save("golden-sweet-potato-apple-puree.pdf");
+  doc.save("avocado-banana-baby-puree.pdf");
 };
 
 export const useRecipePdf = () => {

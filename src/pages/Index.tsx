@@ -1,7 +1,7 @@
-import recipeImage from "@/assets/recipe-sweet-potato-apple.jpg";
+import recipeImage from "@/assets/recipe-avocado-banana.jpg";
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Eye, Leaf, Heart, Download } from "lucide-react";
+import { Check, Clock, Brain, Leaf, Heart, Download, Star, Sparkles, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRecipePdf } from "@/hooks/useRecipePdf";
 
@@ -14,18 +14,20 @@ const Index = () => {
         <div className="w-full">
           <img 
             src={recipeImage} 
-            alt="Golden Sweet Potato & Apple Purée - First Foods Recipe" 
+            alt="Creamy Avocado & Banana Purée - First Foods Recipe for Babies 6+ months" 
             className="w-full h-auto object-cover"
+            width={1024}
+            height={1024}
           />
         </div>
         <div className="px-4 py-4 bg-amber-50">
           <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">First Foods Recipe</p>
           <h1 className="text-lg font-bold text-foreground leading-tight mb-1">
-            Golden Sweet Potato & Apple Purée
+            Creamy Avocado & Banana Brain-Boost Purée
           </h1>
           <p className="text-xs text-muted-foreground flex items-center gap-2">
             <Clock className="w-3 h-3" />
-            20 min • Easy cook • 6+ months
+            5 min • No cooking • 6+ months
           </p>
         </div>
       </section>
@@ -34,16 +36,16 @@ const Index = () => {
       <section className="px-4 py-4">
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Eye className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Vitamin A</p>
+            <Brain className="w-4 h-4 mx-auto text-amber-600 mb-1" />
+            <p className="text-[9px] text-amber-700 font-medium">Brain Dev</p>
           </div>
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
             <Leaf className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Fiber Rich</p>
+            <p className="text-[9px] text-amber-700 font-medium">Healthy Fats</p>
           </div>
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
             <Heart className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Beta-Carotene</p>
+            <p className="text-[9px] text-amber-700 font-medium">Potassium</p>
           </div>
         </div>
       </section>
@@ -53,11 +55,10 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Ingredients</h2>
         <ul className="space-y-1.5">
           {[
-            "1 medium sweet potato (vitamin A + fiber)",
-            "1 ripe apple, peeled & cored (natural sweetness + vitamin C)",
-            "2 tbsp breast milk or formula (familiar taste + nutrition)",
-            "Tiny pinch of cinnamon (optional, aids digestion)",
-            "1 tsp unsalted butter or olive oil (healthy fats for brain)"
+            "1/2 ripe avocado (healthy fats for brain development)",
+            "1/2 ripe banana (natural sweetness + potassium)",
+            "1-2 tbsp breast milk or formula (creamy texture)",
+            "Tiny squeeze of lemon (keeps color fresh, optional)",
           ].map((item, i) => (
             <li key={i} className="flex items-center gap-2 text-xs text-foreground">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
@@ -72,14 +73,12 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Instructions</h2>
         <ol className="space-y-2">
           {[
-            "Peel and dice sweet potato into small cubes",
-            "Peel, core and dice the apple into similar pieces",
-            "Steam or boil until fork-tender (about 15 minutes)",
-            "Drain and let cool slightly",
-            "Add to blender with milk and butter",
-            "Blend until silky smooth and creamy",
-            "Add cinnamon and blend briefly to combine",
-            "Serve warm — babies love the golden color!"
+            "Scoop the ripe avocado flesh into a bowl",
+            "Peel and slice the banana on top",
+            "Add a squeeze of lemon to keep the color bright",
+            "Mash with a fork or blend until silky smooth",
+            "Add breast milk or formula slowly until creamy",
+            "Serve fresh and watch baby smile!",
           ].map((step, i) => (
             <li key={i} className="flex gap-2 text-xs text-foreground">
               <span className="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
@@ -96,10 +95,10 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Why Babies Love It</h2>
         <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-3 space-y-1.5 border border-amber-100">
           {[
-            "Naturally sweet taste — no added sugar needed!",
-            "Beautiful golden-orange color attracts curious eyes",
-            "Silky smooth texture is gentle on new eaters",
-            "Warm comfort food perfect for first meals"
+            "Buttery smooth texture babies can't resist",
+            "Naturally sweet — zero added sugar",
+            "Ready in 5 minutes, no cooking required",
+            "Perfect creamy first food for tiny tummies",
           ].map((benefit, i) => (
             <p key={i} className="flex items-center gap-2 text-[11px] text-foreground">
               <Check className="w-3 h-3 text-amber-600 flex-shrink-0" />
@@ -114,11 +113,11 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">🧡 Health Benefits</h2>
         <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg p-3 border border-amber-200">
           <ul className="space-y-2 text-[11px] text-foreground">
-            <li><strong>Vitamin A</strong> — Essential for healthy eyes, skin and immune system</li>
-            <li><strong>Fiber</strong> — Supports gentle digestion and regular bowel movements</li>
-            <li><strong>Beta-Carotene</strong> — Powerful antioxidant that protects growing cells</li>
-            <li><strong>Vitamin C</strong> — Apple adds immunity boost and iron absorption</li>
-            <li><strong>Complex Carbs</strong> — Provides sustained energy for active babies</li>
+            <li><strong>Healthy Fats</strong> — Avocado is loaded with brain-building omega fats</li>
+            <li><strong>Potassium</strong> — More than a banana alone, supports heart & muscles</li>
+            <li><strong>Fiber</strong> — Keeps baby's digestion smooth and gentle</li>
+            <li><strong>Vitamin E & K</strong> — Boosts immunity and healthy growth</li>
+            <li><strong>Folate</strong> — Essential for rapid cell development</li>
           </ul>
         </div>
       </section>
@@ -127,7 +126,7 @@ const Index = () => {
       <section className="px-4 py-3">
         <h2 className="text-sm font-bold text-foreground mb-1">Storage</h2>
         <p className="text-[11px] text-muted-foreground">
-          Refrigerate in an airtight container for up to 3 days. Freeze in ice cube trays for up to 2 months — thaw in fridge overnight and warm gently before serving.
+          Best served fresh! Refrigerate in an airtight container with a squeeze of lemon for up to 24 hours. Not recommended for freezing — texture changes once thawed.
         </p>
       </section>
 
@@ -151,13 +150,10 @@ const Index = () => {
           </h2>
         </div>
         
-        {/* Visual Timeline */}
         <div className="relative">
-          {/* Connecting Line */}
           <div className="absolute left-[22px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-orange-300 via-green-300 via-blue-300 to-purple-300" />
           
           <div className="space-y-4">
-            {/* 6+ months - Smooth */}
             <div className="relative flex gap-3">
               <div className="w-11 h-11 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
                 <span className="text-white text-[10px] font-bold">6+</span>
@@ -172,12 +168,11 @@ const Index = () => {
                   </div>
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  🥕 Carrot, sweet potato, avocado, banana — all blended silky smooth
+                  🥑 Avocado, banana, sweet potato, carrot — blended silky smooth
                 </p>
               </div>
             </div>
 
-            {/* 7-8 months - Mashed */}
             <div className="relative flex gap-3">
               <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
                 <span className="text-white text-[10px] font-bold">7-8</span>
@@ -197,7 +192,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* 9-11 months - Chunky */}
             <div className="relative flex gap-3">
               <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
                 <span className="text-white text-[10px] font-bold">9-11</span>
@@ -217,7 +211,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* 12+ months - Family */}
             <div className="relative flex gap-3">
               <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
                 <span className="text-white text-[10px] font-bold">12+</span>
@@ -240,52 +233,92 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Divider before App Promo */}
       <div className="border-b border-amber-200" />
 
-      {/* App Promo Section */}
-      <section className="px-4 py-6 bg-gradient-to-b from-amber-50 to-orange-100">
+      {/* PERSUASIVE APP PROMO / CTA SECTION */}
+      <section className="px-4 py-7 bg-gradient-to-b from-amber-50 via-orange-50 to-orange-100">
+        {/* Urgency badge */}
+        <div className="flex justify-center mb-3">
+          <span className="inline-flex items-center gap-1 bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md animate-pulse">
+            <Zap className="w-3 h-3" /> Limited Time Offer
+          </span>
+        </div>
+
         <div className="text-center mb-4">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">Want More Healthy Recipes?</p>
-          <h2 className="text-base font-bold text-foreground leading-tight">
-            Get 300+ Recipes Like This
+          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">
+            Join 50,000+ Happy Moms
+          </p>
+          <h2 className="text-xl font-extrabold text-foreground leading-tight">
+            Stop Stressing About<br/>What to Feed Your Baby
           </h2>
-          <p className="text-[11px] text-muted-foreground mt-1">
-            Plus meal planning, food scanner & more
+          <p className="text-[12px] text-foreground/80 mt-2 leading-snug">
+            Get <strong className="text-amber-700">300+ pediatrician-approved recipes</strong>, weekly meal plans, and a smart food scanner — all in one app.
           </p>
         </div>
 
-        {/* App Screenshots - Side by Side on Mobile */}
+        {/* Star rating social proof */}
+        <div className="flex items-center justify-center gap-1 mb-3">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+          ))}
+          <span className="text-[11px] text-foreground/70 ml-1 font-medium">4.9/5 — 12,000+ reviews</span>
+        </div>
+
+        {/* App Screenshots */}
         <div className="flex gap-2 justify-center mb-4">
           <img 
             src={appRecipes} 
             alt="BabyBites App - Recipes" 
             className="w-[45%] max-w-[160px] h-auto rounded-lg shadow-lg border border-amber-200"
+            loading="lazy"
           />
           <img 
             src={appShopping} 
             alt="BabyBites App - Shopping List" 
             className="w-[45%] max-w-[160px] h-auto rounded-lg shadow-lg border border-amber-200"
+            loading="lazy"
           />
         </div>
 
-        {/* Features List */}
-        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-4">
-          {[
-            "300+ healthy recipes",
-            "Weekly meal planner",
-            "Food scanner",
-            "Growth tracker",
-            "Smart shopping list",
-            "Mom community",
-            "Nutrition tracker",
-            "Expert tips"
-          ].map((feature, i) => (
-            <p key={i} className="flex items-center gap-1.5 text-[10px] text-foreground">
-              <Check className="w-3 h-3 text-amber-600 flex-shrink-0" />
-              {feature}
-            </p>
-          ))}
+        {/* Testimonial */}
+        <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 mb-4 border border-amber-200 shadow-sm">
+          <div className="flex gap-0.5 mb-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
+            ))}
+          </div>
+          <p className="text-[11px] text-foreground italic leading-snug mb-1">
+            "I used to panic at every meal. Now I open the app, pick a recipe, and my baby actually eats it. Total game changer."
+          </p>
+          <p className="text-[10px] text-muted-foreground font-medium">— Sarah M., mom of 8-month-old</p>
+        </div>
+
+        {/* What you get */}
+        <div className="bg-white/60 rounded-xl p-3 mb-4 border border-amber-200">
+          <p className="text-[11px] font-bold text-amber-800 mb-2 text-center uppercase tracking-wide">What You Get Today</p>
+          <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
+            {[
+              "300+ healthy recipes",
+              "Weekly meal planner",
+              "Food safety scanner",
+              "Growth tracker",
+              "Smart shopping list",
+              "Mom community",
+              "Allergy tracker",
+              "Expert nutrition tips",
+            ].map((feature, i) => (
+              <p key={i} className="flex items-center gap-1.5 text-[10px] text-foreground font-medium">
+                <Check className="w-3 h-3 text-green-600 flex-shrink-0" />
+                {feature}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* Risk reversal */}
+        <div className="flex items-center justify-center gap-1.5 mb-3 text-[10px] text-foreground/70">
+          <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
+          <span><strong>100% free to try</strong> — no credit card required</span>
         </div>
 
         {/* CTA Button */}
@@ -295,13 +328,16 @@ const Index = () => {
           rel="noopener noreferrer"
           className="block"
         >
-          <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm py-5 rounded-full shadow-lg">
-            Learn More →
+          <Button className="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hover:from-amber-600 hover:via-orange-600 hover:to-red-600 text-white font-extrabold text-base py-6 rounded-full shadow-2xl flex items-center justify-center gap-2 transform hover:scale-[1.02] transition-all">
+            <Sparkles className="w-4 h-4" />
+            Get Instant Access — Free
           </Button>
         </a>
+        <p className="text-center text-[10px] text-muted-foreground mt-2">
+          ⏱ Takes 30 seconds • Join thousands of moms today
+        </p>
       </section>
 
-      {/* Footer */}
       <footer className="px-4 py-4 text-center bg-amber-50">
         <p className="text-[9px] text-muted-foreground">
           © 2024 BabyBites. All rights reserved.
