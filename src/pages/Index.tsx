@@ -120,6 +120,25 @@ const Index = () => {
             <li><strong>Folate</strong> — Essential for rapid cell development</li>
           </ul>
         </div>
+
+        {/* Scroll Indicator - Gift Tease */}
+        <div className="mt-4 flex flex-col items-center text-center animate-fade-in">
+          <div className="relative bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 text-white rounded-2xl px-4 py-3 shadow-lg max-w-[320px]">
+            <div className="flex items-center justify-center gap-2 mb-1">
+              <Gift className="w-4 h-4" />
+              <p className="text-[11px] font-bold uppercase tracking-wide">Surprise Below!</p>
+              <Gift className="w-4 h-4" />
+            </div>
+            <p className="text-[11px] leading-snug font-medium">
+              Keep scrolling to unlock a special little gift we left just for you 🎁
+            </p>
+          </div>
+          <div className="mt-2 flex flex-col items-center">
+            <ChevronDown className="w-5 h-5 text-amber-600 animate-bounce" style={{ animationDelay: "0s" }} />
+            <ChevronDown className="w-5 h-5 text-amber-500 -mt-3 animate-bounce" style={{ animationDelay: "0.15s" }} />
+            <ChevronDown className="w-5 h-5 text-amber-400 -mt-3 animate-bounce" style={{ animationDelay: "0.3s" }} />
+          </div>
+        </div>
       </section>
 
       {/* Storage Tips */}
