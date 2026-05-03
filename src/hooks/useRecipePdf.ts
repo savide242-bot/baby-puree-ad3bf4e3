@@ -101,7 +101,7 @@ export const generateRecipePdf = () => {
   doc.setFillColor(254, 243, 199);
   doc.roundedRect(margin, y, contentWidth, 12, 2, 2, "F");
   
-  const benefitLabels = ["Vitamin A", "Fiber Rich", "Beta-Carotene"];
+  const benefitLabels = ["Brain Dev", "Healthy Fats", "Potassium"];
   const benefitWidth = contentWidth / 3;
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
@@ -283,17 +283,17 @@ export const generateRecipePdf = () => {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(180, 83, 9);
-  doc.text("Loved this recipe?", pageWidth / 2, y + 10, { align: "center" });
+  doc.text("Stop Stressing About Baby Meals!", pageWidth / 2, y + 10, { align: "center" });
 
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setTextColor(55, 65, 81);
-  doc.text("Get 300+ recipes in the best baby nutrition app!", pageWidth / 2, y + 18, { align: "center" });
+  doc.text("Join 50,000+ moms — 300+ recipes, meal plans & food scanner.", pageWidth / 2, y + 18, { align: "center" });
 
   // CTA Button
-  const buttonWidth = 70;
-  const buttonHeight = 10;
+  const buttonWidth = 90;
+  const buttonHeight = 11;
   const buttonX = (pageWidth - buttonWidth) / 2;
-  const buttonY = y + 26;
+  const buttonY = y + 24;
 
   // Button shadow
   doc.setFillColor(217, 119, 6);
@@ -305,9 +305,15 @@ export const generateRecipePdf = () => {
 
   // Button text
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.setTextColor(255, 255, 255);
-  doc.text("LEARN MORE >>", pageWidth / 2, buttonY + 7, { align: "center" });
+  doc.text("GET INSTANT ACCESS - FREE", pageWidth / 2, buttonY + 7.5, { align: "center" });
+
+  // Risk reversal
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7);
+  doc.setTextColor(107, 114, 128);
+  doc.text("100% free to try - no credit card required", pageWidth / 2, buttonY + 16, { align: "center" });
 
   // Clickable links
   doc.link(buttonX, buttonY, buttonWidth, buttonHeight, { url: "https://babybitespage.lovable.app/" });
@@ -322,7 +328,7 @@ export const generateRecipePdf = () => {
   doc.text("Made with love by BabyBites | babybitespage.lovable.app", pageWidth / 2, pageHeight - 5, { align: "center" });
 
   // Download
-  doc.save("golden-sweet-potato-apple-puree.pdf");
+  doc.save("avocado-banana-baby-puree.pdf");
 };
 
 export const useRecipePdf = () => {
