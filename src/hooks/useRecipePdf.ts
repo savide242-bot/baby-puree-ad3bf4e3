@@ -14,39 +14,36 @@ interface RecipeData {
 
 const recipeData: RecipeData = {
   title: "First Foods Recipe",
-  subtitle: "Golden Sweet Potato & Apple Purée",
-  time: "20 min",
+  subtitle: "Creamy Avocado & Banana Brain-Boost Purée",
+  time: "5 min",
   age: "6+ months",
   ingredients: [
-    "1 medium sweet potato (vitamin A + fiber)",
-    "1 ripe apple, peeled & cored (natural sweetness + vitamin C)",
-    "2 tbsp breast milk or formula (familiar taste)",
-    "Tiny pinch of cinnamon (optional, aids digestion)",
-    "1 tsp unsalted butter or olive oil (healthy fats)"
+    "1/2 ripe avocado (healthy fats for brain)",
+    "1/2 ripe banana (potassium + natural sweetness)",
+    "1-2 tbsp breast milk or formula (creamy texture)",
+    "Tiny squeeze of lemon (optional, keeps color fresh)"
   ],
   instructions: [
-    "Peel and dice sweet potato into small cubes",
-    "Peel, core and dice the apple",
-    "Steam or boil until fork-tender (15 min)",
-    "Drain and let cool slightly",
-    "Add to blender with milk and butter",
-    "Blend until silky smooth",
-    "Add cinnamon and blend briefly",
-    "Serve warm — babies love it!"
+    "Scoop the ripe avocado flesh into a bowl",
+    "Peel and slice the banana on top",
+    "Add a small squeeze of lemon",
+    "Mash with a fork or blend until silky smooth",
+    "Add breast milk or formula slowly until creamy",
+    "Serve fresh and watch baby smile!"
   ],
   benefits: [
-    "Naturally sweet - no added sugar needed!",
-    "Golden-orange color attracts baby's eyes",
-    "Silky smooth texture is gentle on new eaters",
-    "Warm comfort food perfect for first meals"
+    "Buttery smooth texture babies love!",
+    "Naturally sweet — zero added sugar",
+    "Ready in 5 minutes, no cooking needed",
+    "Perfect creamy first food for tiny tummies"
   ],
   healthBenefits: [
-    { title: "Vitamin A", description: "Healthy eyes & immune system" },
-    { title: "Fiber", description: "Gentle digestion support" },
-    { title: "Beta-Carotene", description: "Powerful antioxidant" },
-    { title: "Vitamin C", description: "Immunity & iron absorption" }
+    { title: "Healthy Fats", description: "Brain-building omega fats" },
+    { title: "Potassium", description: "Heart & muscle support" },
+    { title: "Fiber", description: "Gentle smooth digestion" },
+    { title: "Folate", description: "Rapid cell development" }
   ],
-  storage: "Fridge: 3 days. Freezer: 2 months in ice cube trays."
+  storage: "Best served fresh. Fridge: 24h with lemon. Not for freezing."
 };
 
 export const generateRecipePdf = () => {
