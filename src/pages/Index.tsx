@@ -1,29 +1,19 @@
-import recipeImage from "@/assets/recipe-avocado-banana.jpg";
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Leaf, Heart, Download, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown } from "lucide-react";
+import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRecipePdf } from "@/hooks/useRecipePdf";
+import DiscountPopup from "@/components/DiscountPopup";
 
 const Index = () => {
-  const { generateRecipePdf } = useRecipePdf();
   return (
     <div className="min-h-screen bg-background">
+      <DiscountPopup />
       {/* Hero Section */}
       <section className="relative">
-        <div className="w-full">
-          <img 
-            src={recipeImage} 
-            alt="Creamy Avocado & Banana Purée - First Foods Recipe for Babies 6+ months" 
-            className="w-full h-auto object-cover"
-            width={1024}
-            height={1024}
-          />
-        </div>
-        <div className="px-4 py-4 bg-amber-50">
+        <div className="px-4 py-5 bg-amber-50">
           <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">First Foods Recipe</p>
           <h1 className="text-lg font-bold text-foreground leading-tight mb-1">
-            Creamy Avocado & Banana Brain-Boost Purée
+            Creamy Avocado & Banana Baby Purée
           </h1>
           <p className="text-xs text-muted-foreground flex items-center gap-2">
             <Clock className="w-3 h-3" />
