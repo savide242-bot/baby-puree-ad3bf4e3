@@ -139,16 +139,7 @@ const Index = () => {
         </p>
       </section>
 
-      {/* Download PDF Button */}
-      <section className="px-4 py-4">
-        <Button 
-          onClick={generateRecipePdf}
-          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-sm py-5 rounded-full shadow-lg flex items-center justify-center gap-2"
-        >
-          <Download className="w-4 h-4" />
-          Download Recipe PDF
-        </Button>
-      </section>
+
 
       {/* Age Guide Section */}
       <section className="px-4 py-5 bg-gradient-to-b from-amber-50 to-orange-50">
