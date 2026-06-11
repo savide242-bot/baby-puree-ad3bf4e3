@@ -12,7 +12,7 @@ const DiscountPopup = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setOpen(true), 5 * 60 * 1000);
+    const timer = setTimeout(() => setOpen(true), 2 * 60 * 1000);
     return () => clearTimeout(timer);
   }, []);
 
