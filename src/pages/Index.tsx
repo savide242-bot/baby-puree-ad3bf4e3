@@ -1,8 +1,9 @@
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown } from "lucide-react";
+import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown, Download, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DiscountPopup from "@/components/DiscountPopup";
+import { generateRecipePdf } from "@/hooks/useRecipePdf";
 
 const Index = () => {
   return (
