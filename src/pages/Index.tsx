@@ -1,8 +1,9 @@
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown } from "lucide-react";
+import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown, Download, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DiscountPopup from "@/components/DiscountPopup";
+import { generateRecipePdf } from "@/hooks/useRecipePdf";
 
 const Index = () => {
   return (
@@ -138,6 +139,33 @@ const Index = () => {
           Best served fresh! Refrigerate in an airtight container with a squeeze of lemon for up to 24 hours. Not recommended for freezing — texture changes once thawed.
         </p>
       </section>
+
+      {/* Free Ebook Export */}
+      <section className="px-4 py-4">
+        <div className="bg-gradient-to-br from-amber-100 via-orange-100 to-amber-50 rounded-2xl p-4 border-2 border-amber-300 shadow-lg">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <BookOpen className="w-4 h-4 text-amber-700" />
+            <p className="text-[10px] uppercase tracking-wider text-amber-800 font-bold">Free Recipe Ebook</p>
+          </div>
+          <h3 className="text-base font-extrabold text-center text-foreground mb-1 leading-tight">
+            Your Free Baby Recipe Ebook
+          </h3>
+          <p className="text-[11px] text-center text-foreground/80 mb-3 leading-snug">
+            Easy, healthy recipes for babies 6+ months — full nutrition info, storage & safety notes.
+          </p>
+          <Button
+            onClick={() => generateRecipePdf()}
+            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-full py-5 shadow-md flex items-center justify-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Download Free Ebook (PDF)
+          </Button>
+          <p className="text-center text-[9px] text-muted-foreground mt-2">
+            Instant download • No email required
+          </p>
+        </div>
+      </section>
+
 
 
 
