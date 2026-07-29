@@ -750,14 +750,14 @@ export function buildMealPlannerDoc(): jsPDF {
         doc.setFontSize(e.level === 1 ? 9 : 8.4);
         setText(e.level === 1 ? INK : [110, 114, 118]);
         doc.text(e.label, M + indent, ty);
+        const labelEnd = M + indent + doc.getTextWidth(e.label) + 3;
         doc.setFont("helvetica", "normal");
         doc.setFontSize(8.2);
         setText(MUTED);
         doc.text(String(e.page), PW - M, ty, { align: "right" });
         setDraw([232, 229, 223]);
         doc.setLineWidth(0.15);
-        const labelEnd = M + indent + doc.getTextWidth(e.label) + 3;
-        doc.line(labelEnd, ty - 1, PW - M - 8, ty - 1);
+        doc.line(labelEnd, ty - 1.2, PW - M - 8, ty - 1.2);
       }
       doc.link(M, ty - 5, CW, h, { pageNumber: e.page });
       ty += h;
