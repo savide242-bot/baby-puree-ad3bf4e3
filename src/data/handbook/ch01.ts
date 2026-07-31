@@ -281,6 +281,12 @@ export const ch01: Chapter = {
       text: "For older babies and toddlers, additional red flags include gagging or choking with every meal regardless of texture, complete food refusal lasting more than a few days accompanied by weight loss, blood in stool, persistent vomiting after most feeds, or visible fatigue and reduced activity that seems out of proportion to a normal cold. None of these are meant to cause alarm on their own, they are simply the threshold where a professional assessment adds real value over continued home observation.",
     },
     {
+      type: "callout",
+      kind: "tip",
+      title: "Track total intake weekly, not daily",
+      body: "Day-to-day intake naturally swings due to teething, minor illness, growth spurts, and simple mood. Instead of judging each day in isolation, mentally average intake over a full week; this smooths out normal variation and gives a much more accurate picture of whether your baby's overall nutrition is on track.",
+    },
+    {
       type: "keyfacts",
       items: [
         { label: "Iron RDA, 7-12 months", value: "11 mg/day" },

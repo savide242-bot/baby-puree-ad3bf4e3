@@ -314,6 +314,12 @@ export const ch02: Chapter = {
       body: "Using dessert as a reward for eating vegetables, or turning on a screen to get through a meal, both tend to backfire over time: they can increase resistance to the 'less desirable' food and shift a child's focus away from their own hunger and fullness cues. Serve dessert on the same footing as other foods, without it functioning as a bribe.",
     },
     {
+      type: "callout",
+      kind: "tip",
+      title: "Keep a running list of accepted foods",
+      body: "Write down every food your toddler has ever accepted, even once, on a sticky note on the fridge. On low-appetite or high-fatigue days, pull three items from that list rather than improvising, which removes decision fatigue exactly when you have the least energy for it.",
+    },
+    {
       type: "keyfacts",
       items: [
         { label: "Protein portion, 12-24 months", value: "1/4 to 1/2 cup" },

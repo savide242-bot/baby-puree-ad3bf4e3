@@ -470,7 +470,6 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   /* ---------------- table of contents ---------------- */
 
   newPage();
-  const tocPage = doc.getNumberOfPages();
   y = 42;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);
@@ -487,8 +486,14 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   doc.line(M, y, M + 30, y);
   y += 14;
   const tocY: number[] = [];
+  const tocPages: number[] = [];
   chapters.forEach((ch) => {
+    if (y + 16 > BOTTOM) {
+      newPage();
+      y = 34;
+    }
     tocY.push(y);
+    tocPages.push(doc.getNumberOfPages());
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10.4);
     setText(INK);
