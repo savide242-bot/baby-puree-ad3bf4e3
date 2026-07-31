@@ -554,8 +554,10 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
 
     /* takeaways */
     const tl = ch.takeaways;
+    doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
-    const th = tl.length * 6.2 + 20;
+    const tLines = tl.map((t) => wrap(t, CW - 22));
+    const th = tLines.reduce((a, l) => a + l.length * 4.8 + 1.8, 0) + 22;
     if (y + th > BOTTOM) newPage();
     setFill([243, 238, 229]);
     doc.roundedRect(M, y, CW, th, 3, 3, "F");
@@ -563,14 +565,15 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     doc.setFontSize(7);
     setText(ACCENT_DEEP);
     doc.text("CHAPTER TAKEAWAYS", M + 7, y + 8);
-    tl.forEach((t, i) => {
-      const ty = y + 16.5 + i * 6.2;
+    let ty = y + 16.5;
+    tLines.forEach((lines) => {
       setFill(ACCENT);
       doc.circle(M + 8, ty - 1.1, 0.9, "F");
       doc.setFont("helvetica", "normal");
       doc.setFontSize(9);
       setText(SOFT_INK);
-      doc.text(wrap(t, CW - 22)[0], M + 12.5, ty);
+      lines.forEach((l, li) => doc.text(l, M + 12.5, ty + li * 4.8));
+      ty += lines.length * 4.8 + 1.8;
     });
     y += th + 6;
   });
