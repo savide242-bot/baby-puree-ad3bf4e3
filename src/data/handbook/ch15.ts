@@ -366,6 +366,21 @@ export const ch15: Chapter = {
       title: "There is no universal 'right' schedule",
       body: "Two healthy, well-fed babies of the same age can have schedules that differ by an hour or more in every direction and both be entirely appropriate. Use the sample schedules in this chapter as a starting structure, then let your own baby's hunger, sleep, and mood cues fine-tune the exact times.",
     },
+    {
+      type: "heading",
+      text: "Twins, Multiples and Staggered Feeding",
+      sub: "Practical strategies when two schedules must coexist",
+    },
+    {
+      type: "paragraph",
+      text: "Parents of twins or closely spaced siblings often find that trying to run two completely independent schedules is unsustainable within the first year. Most experienced parents of multiples converge the two babies onto a single shared schedule within the first 8-12 weeks, even if it means occasionally waking a sleeping baby to keep feeds synchronized. A shared schedule dramatically reduces the total number of feeding and nap events in a day, which is often the difference between a manageable day and a day that never has a break.",
+    },
+    {
+      type: "callout",
+      kind: "tip",
+      title: "Wake the sleeping twin, within reason",
+      body: "If one twin naps 20-30 minutes longer than the other, it is usually fine to gently wake the sleeper to keep the schedule aligned, especially before 6 months. Past 6 months, allow more individual variation as their systems mature and their schedules can tolerate small differences.",
+    },
   ],
   takeaways: [
     "Milk, solids, and naps form one interconnected system; adjusting one always affects the other two.",
