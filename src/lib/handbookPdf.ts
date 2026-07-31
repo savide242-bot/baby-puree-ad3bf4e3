@@ -470,7 +470,6 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   /* ---------------- table of contents ---------------- */
 
   newPage();
-  const tocPage = doc.getNumberOfPages();
   y = 42;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);
@@ -487,8 +486,14 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   doc.line(M, y, M + 30, y);
   y += 14;
   const tocY: number[] = [];
+  const tocPages: number[] = [];
   chapters.forEach((ch) => {
+    if (y + 16 > BOTTOM) {
+      newPage();
+      y = 34;
+    }
     tocY.push(y);
+    tocPages.push(doc.getNumberOfPages());
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10.4);
     setText(INK);
@@ -554,8 +559,10 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
 
     /* takeaways */
     const tl = ch.takeaways;
+    doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
-    const th = tl.length * 6.2 + 20;
+    const tLines = tl.map((t) => wrap(t, CW - 22));
+    const th = tLines.reduce((a, l) => a + l.length * 4.8 + 1.8, 0) + 22;
     if (y + th > BOTTOM) newPage();
     setFill([243, 238, 229]);
     doc.roundedRect(M, y, CW, th, 3, 3, "F");
@@ -563,14 +570,15 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     doc.setFontSize(7);
     setText(ACCENT_DEEP);
     doc.text("CHAPTER TAKEAWAYS", M + 7, y + 8);
-    tl.forEach((t, i) => {
-      const ty = y + 16.5 + i * 6.2;
+    let ty = y + 16.5;
+    tLines.forEach((lines) => {
       setFill(ACCENT);
       doc.circle(M + 8, ty - 1.1, 0.9, "F");
       doc.setFont("helvetica", "normal");
       doc.setFontSize(9);
       setText(SOFT_INK);
-      doc.text(wrap(t, CW - 22)[0], M + 12.5, ty);
+      lines.forEach((l, li) => doc.text(l, M + 12.5, ty + li * 4.8));
+      ty += lines.length * 4.8 + 1.8;
     });
     y += th + 6;
   });
@@ -654,8 +662,8 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
 
   /* ---------------- toc links + footers ---------------- */
 
-  doc.setPage(tocPage);
   chapters.forEach((ch, i) => {
+    doc.setPage(tocPages[i]);
     const py = tocY[i];
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9.6);
