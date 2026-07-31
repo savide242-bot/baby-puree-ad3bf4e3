@@ -264,14 +264,13 @@ export const ch04: Chapter = {
       title: "Use a Simple Weekly Mental Checklist Instead of Daily Tallies",
       body: "Rather than tallying grams at every meal, mentally check across a week: did my baby get some iron-rich food, some fruit or vegetable, and some protein most days? That looser weekly lens matches how appetite regulation actually works and is far less stressful to maintain.",
     },
-  ],
-
     {
       type: "callout",
       kind: "note",
       title: "Every Baby Has Their Own Curve",
-      body: "Two healthy babies of the same age can have genuinely different appetites, one consistently eating near the top of these portion ranges and another near the bottom, purely due to differences in body size, activity level, and metabolism. Use these tables as an orientation point, then calibrate to your own child's growth trend rather than chasing an average."
+      body: "Two healthy babies of the same age can have genuinely different appetites, one consistently eating near the top of these portion ranges and another near the bottom, purely due to differences in body size, activity level, and metabolism. Use these tables as an orientation point, then calibrate to your own child's growth trend rather than chasing an average.",
     },
+  ],
   takeaways: [
     "Babies have a functioning internal hunger-fullness feedback system from birth; the parent's job is to provide appropriate food and a calm environment, not to enforce specific amounts.",
     "Portion sizes are helpful guides, not strict rules; judge intake over a full week rather than a single meal, since daily variation of 30-40% is completely normal.",
