@@ -231,6 +231,25 @@ export const ch01: Chapter = {
     },
     {
       type: "heading",
+      text: "A Day in the Life: Concrete Examples by Age",
+      sub: "What real feeding schedules look like",
+    },
+    {
+      type: "paragraph",
+      text: "At 2 months, a typical day might include 7 feeds of 3 to 4 oz each, spaced roughly every 3 hours, with one longer overnight stretch of 4 to 5 hours if the baby is developmentally ready. At 7 months, a typical day includes a morning milk feed, breakfast of iron-fortified cereal with fruit, a midday milk feed, lunch of pureed lentils and vegetable, an afternoon milk feed, dinner of mashed protein and starch, and a final bedtime milk feed, totaling around 24 to 28 oz of milk plus two to three small solid meals.",
+    },
+    {
+      type: "paragraph",
+      text: "At 15 months, a typical day looks much more like a small adult's: breakfast, morning snack, lunch, afternoon snack, dinner, and roughly 16 oz of whole milk split between meals, with water offered throughout the day, especially in warm weather or after active play. Recognizing these concrete patterns helps new parents calibrate expectations rather than comparing their baby's schedule to an idealized chart that rarely matches real life exactly.",
+    },
+    {
+      type: "callout",
+      kind: "note",
+      title: "Schedules are a guide, not a rulebook",
+      body: "Every baby's rhythm will vary somewhat based on temperament, growth spurts, teething, illness, and daycare routines. Use example schedules as a starting reference point, then adjust based on your own baby's hunger cues and sleep needs rather than forcing an exact match.",
+    },
+    {
+      type: "heading",
       text: "Reading a Growth Chart Without Panicking",
       sub: "Trends matter more than single points",
     },
