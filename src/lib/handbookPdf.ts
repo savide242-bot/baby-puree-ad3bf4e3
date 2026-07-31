@@ -662,8 +662,8 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
 
   /* ---------------- toc links + footers ---------------- */
 
-  doc.setPage(tocPage);
   chapters.forEach((ch, i) => {
+    doc.setPage(tocPages[i]);
     const py = tocY[i];
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9.6);

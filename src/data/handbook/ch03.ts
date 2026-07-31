@@ -283,6 +283,13 @@ export const ch03: Chapter = {
       body: "Persistent paleness, unusual fatigue, recurring infections, pica (chewing non-food items), or a flattening growth curve deserve a conversation with your pediatrician. A simple blood panel including hemoglobin and ferritin can confirm or rule out iron deficiency quickly and safely, and similar targeted testing exists for vitamin D and B12 concerns.",
     },
   ],
+
+    {
+      type: "callout",
+      kind: "note",
+      title: "Nutrient Needs Compound, Not Compete",
+      body: "It is tempting to treat each nutrient in isolation, but in practice a single well-chosen meal, such as beef and lentil stew with bell pepper and a yogurt side, simultaneously delivers iron, zinc, vitamin C, calcium, and B12 in one sitting, which is far more sustainable than trying to hit each nutrient with a separate dedicated food."
+    },
   takeaways: [
     "Iron needs spike sharply around six months, right when milk alone stops being enough, making iron-rich first foods essential rather than optional.",
     "Heme iron from meat is absorbed far more efficiently than non-heme iron from plants; pairing plant iron with vitamin C narrows that gap significantly.",

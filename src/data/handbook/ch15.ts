@@ -382,6 +382,12 @@ export const ch15: Chapter = {
       body: "If one twin naps 20-30 minutes longer than the other, it is usually fine to gently wake the sleeper to keep the schedule aligned, especially before 6 months. Past 6 months, allow more individual variation as their systems mature and their schedules can tolerate small differences.",
     },
   ],
+    {
+      type: "callout",
+      kind: "note",
+      title: "A note on schedule tools",
+      body: "Apps that log feed times and diaper counts can be useful for spotting patterns over 1-2 weeks, but checking them obsessively in real time often increases parental anxiety without improving the baby's actual routine. Use logs to review trends, not to make minute-by-minute decisions.",
+    },
   takeaways: [
     "Milk, solids, and naps form one interconnected system; adjusting one always affects the other two.",
     "Space milk feeds and meals by 60-90 minutes where possible so appetite for solids is not blunted.",
