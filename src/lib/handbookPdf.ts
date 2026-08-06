@@ -1,6 +1,8 @@
 import { jsPDF } from "jspdf";
 import type { Block, Chapter } from "@/data/handbook/types";
-import { chapters } from "@/data/handbook/chapters";
+import { chapters, chapterByNumber } from "@/data/handbook/chapters";
+import { parts } from "@/data/handbook/parts";
+
 
 import coverImg from "@/assets/handbook/cover.jpg";
 import needsImg from "@/assets/handbook/needs.jpg";
