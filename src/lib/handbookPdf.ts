@@ -792,15 +792,17 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
 
   /* ---------------- toc links + footers ---------------- */
 
-  chapters.forEach((ch, i) => {
+  entries2.forEach((e, i) => {
     doc.setPage(tocPages[i]);
     const py = tocY[i];
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9.6);
+    doc.setFontSize(e.kind === "part" ? 8.6 : 9.4);
     setText(ACCENT_DEEP);
-    doc.text(String(chapterPages[i]), PW - M, py, { align: "right" });
-    doc.link(M, py - 6, CW, 14, { pageNumber: chapterPages[i] });
+    const ly = e.kind === "part" ? py + 1.8 : py;
+    doc.text(String(entryPages[i]), PW - M - (e.kind === "part" ? 3.5 : 0), ly, { align: "right" });
+    doc.link(M, ly - 6, CW, 13, { pageNumber: entryPages[i] });
   });
+
 
   const total = doc.getNumberOfPages();
   for (let p = 2; p < total; p++) {
