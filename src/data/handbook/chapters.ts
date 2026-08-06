@@ -14,7 +14,9 @@ import { ch12 } from "./ch12";
 import { ch13 } from "./ch13";
 import { ch14 } from "./ch14";
 import { ch15 } from "./ch15";
+import { ch16 } from "./ch16";
 import { ch17 } from "./ch17";
+import { ch18 } from "./ch18";
 import { ch19 } from "./ch19";
 import { ch20 } from "./ch20";
 import { ch25 } from "./ch25";
@@ -35,8 +37,12 @@ export const chapters: Chapter[] = [
   ch13,
   ch14,
   ch15,
+  ch16,
   ch17,
+  ch18,
   ch19,
   ch20,
   ch25,
 ];
+
+export const chapterByNumber = new Map<number, Chapter>(chapters.map((c) => [c.number, c]));
