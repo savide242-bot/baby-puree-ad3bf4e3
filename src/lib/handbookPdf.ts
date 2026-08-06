@@ -599,7 +599,7 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     setText(ACCENT_DEEP);
     wrap(p.promise, CW - 6).forEach((l) => {
       doc.text(l, M, y);
-      y += 5.6);
+      y += 5.6;
     });
     y += 4;
 
