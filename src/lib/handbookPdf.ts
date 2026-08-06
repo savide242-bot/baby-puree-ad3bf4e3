@@ -467,6 +467,24 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     "You decide what is offered, when it is offered and where it is offered. Your baby decides whether to eat and how much. Protecting that division of responsibility prevents most feeding battles before they start.",
   );
 
+  /* ---------------- ordered structure ---------------- */
+
+  type Entry =
+    | { kind: "part"; part: (typeof parts)[number] }
+    | { kind: "chapter"; ch: Chapter; display: number; part: (typeof parts)[number] };
+
+  const entries2: Entry[] = [];
+  let displayNo = 0;
+  parts.forEach((p) => {
+    entries2.push({ kind: "part", part: p });
+    p.chapters.forEach((n) => {
+      const ch = chapterByNumber.get(n);
+      if (!ch) return;
+      displayNo += 1;
+      entries2.push({ kind: "chapter", ch, display: displayNo, part: p });
+    });
+  });
+
   /* ---------------- table of contents ---------------- */
 
   newPage();
@@ -484,41 +502,148 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   setDraw(ACCENT);
   doc.setLineWidth(0.5);
   doc.line(M, y, M + 30, y);
-  y += 14;
+  y += 8;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9);
+  setText(MUTED);
+  doc.text("Ten parts. Every promise in this book, in the order you will need it.", M, y);
+  y += 12;
+
   const tocY: number[] = [];
   const tocPages: number[] = [];
-  chapters.forEach((ch) => {
-    if (y + 16 > BOTTOM) {
+
+  entries2.forEach((e) => {
+    const h = e.kind === "part" ? 18 : 13;
+    if (y + h > BOTTOM) {
       newPage();
       y = 34;
     }
     tocY.push(y);
     tocPages.push(doc.getNumberOfPages());
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(10.4);
-    setText(INK);
-    doc.text(`${String(ch.number).padStart(2, "0")}   ${ch.title}`, M, y);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(8.2);
-    setText(MUTED);
-    doc.text(ch.subtitle, M + 11, y + 4.8);
-    setDraw(LINE);
-    doc.setLineWidth(0.2);
-    doc.line(M, y + 9.5, PW - M, y + 9.5);
-    y += 16;
+
+    if (e.kind === "part") {
+      y += 3;
+      setFill(ACCENT_TINT);
+      doc.roundedRect(M, y - 5.6, CW, 12.4, 2, 2, "F");
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(7);
+      setText(ACCENT_DEEP);
+      doc.text(`PART ${String(e.part.number).padStart(2, "0")}`, M + 3.5, y - 1.2);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9.4);
+      setText(INK);
+      doc.text(e.part.kicker.slice(0, 52), M + 22, y - 1.2);
+      y += 15;
+    } else {
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9.8);
+      setText(INK);
+      doc.text(`${String(e.display).padStart(2, "0")}   ${e.ch.title}`, M + 6, y);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(7.8);
+      setText(MUTED);
+      doc.text(e.ch.subtitle.slice(0, 90), M + 16, y + 4.2);
+      setDraw(LINE);
+      doc.setLineWidth(0.15);
+      doc.line(M + 6, y + 7.8, PW - M, y + 7.8);
+      y += 13;
+    }
   });
 
-  /* ---------------- chapters ---------------- */
+  /* ---------------- parts + chapters ---------------- */
 
-  const chapterPages: number[] = [];
+  const entryPages: number[] = [];
 
-  chapters.forEach((ch: Chapter) => {
+  const partDivider = (p: (typeof parts)[number]) => {
     showChrome = false;
     newPage();
-    chapterPages.push(doc.getNumberOfPages());
+    entryPages.push(doc.getNumberOfPages());
+    runningTitle = p.kicker;
+
+    const hero = img[p.image];
+    if (hero) doc.addImage(hero, "JPEG", 0, 0, PW, 132, undefined, "FAST");
+    setFill(CREAM);
+    doc.rect(0, 130, PW, PH - 130, "F");
+    setFill(ACCENT);
+    doc.rect(0, 128, PW, 2.4, "F");
+
+    /* floating part badge */
+    setFill(ACCENT_DEEP);
+    doc.roundedRect(M, 112, 40, 13, 6.5, 6.5, "F");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8.6);
+    setText(WHITE);
+    doc.text(`PART ${String(p.number).padStart(2, "0")}`, M + 20, 120.4, { align: "center" });
+
+    y = 148;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    setText(ACCENT_DEEP);
+    doc.text(p.kicker, M, y);
+    y += 12;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(21);
+    setText(INK);
+    wrap(p.title, CW - 10).forEach((l) => {
+      doc.text(l, M, y);
+      y += 10.5;
+    });
+    y += 2;
+    setDraw(ACCENT);
+    doc.setLineWidth(0.5);
+    doc.line(M, y, M + 26, y);
+    y += 9;
+
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10.4);
+    setText(ACCENT_DEEP);
+    wrap(p.promise, CW - 6).forEach((l) => {
+      doc.text(l, M, y);
+      y += 5.6);
+    });
+    y += 4;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9.4);
+    setText(SOFT_INK);
+    wrap(p.explainer, CW).forEach((l) => {
+      doc.text(l, M, y);
+      y += 4.9;
+    });
+    y += 6;
+
+    const cl = p.covered.map((c) => wrap(c, CW - 26));
+    const boxH = cl.reduce((a, l) => a + l.length * 4.7 + 1.6, 0) + 20;
+    setFill([243, 238, 229]);
+    doc.roundedRect(M, y, CW, boxH, 3, 3, "F");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(7);
+    setText(ACCENT_DEEP);
+    doc.text("WHAT THIS PART COVERS", M + 7, y + 8);
+    let cy = y + 16.5;
+    cl.forEach((lines) => {
+      setFill(ACCENT);
+      doc.circle(M + 8, cy - 1.1, 0.9, "F");
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9.2);
+      setText(SOFT_INK);
+      lines.forEach((l, li) => doc.text(l, M + 12.5, cy + li * 4.7));
+      cy += lines.length * 4.7 + 1.6;
+    });
+  };
+
+  entries2.forEach((e) => {
+    if (e.kind === "part") {
+      partDivider(e.part);
+      return;
+    }
+    const ch = e.ch;
+    showChrome = false;
+    newPage();
+    entryPages.push(doc.getNumberOfPages());
     runningTitle = ch.title;
 
-    const hero = ch.image ? img[ch.image] : undefined;
+    const hero = ch.image ? img[ch.image] : img[e.part.image];
     if (hero) {
       doc.addImage(hero, "JPEG", 0, 0, PW, 118, undefined, "FAST");
       setFill(CREAM);
@@ -530,7 +655,11 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(8);
     setText(ACCENT_DEEP);
-    doc.text(`CHAPTER ${String(ch.number).padStart(2, "0")}`, M, y);
+    doc.text(
+      `PART ${String(e.part.number).padStart(2, "0")}   |   CHAPTER ${String(e.display).padStart(2, "0")}`,
+      M,
+      y,
+    );
     y += 13;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(23);
@@ -582,6 +711,7 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     });
     y += th + 6;
   });
+
 
   /* ---------------- final CTA ---------------- */
 
