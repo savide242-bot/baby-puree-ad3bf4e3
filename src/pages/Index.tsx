@@ -151,8 +151,30 @@ const Index = () => {
             The Complete Baby Nutrition Handbook
           </h3>
           <p className="text-[11px] text-center text-foreground/80 mb-3 leading-snug">
-            10 illustrated chapters: nutrient needs by age, balanced plates, portions, proteins, first-food timeline, foods to avoid, readiness signs & myth busting.
+            242 pages, 10 illustrated parts. Here is exactly what you are getting:
           </p>
+          <ul className="text-[10.5px] text-foreground/80 leading-snug space-y-1.5 mb-3">
+            {[
+              ["🍼", "Nutritional Needs by Age", "The exact nutrients your baby needs at 6, 9, 12 months and beyond."],
+              ["🍽️", "Building a Balanced Plate", "A simple, repeatable method so balance becomes automatic."],
+              ["💊", "The Vitamins & Minerals That Matter Most", "Iron, zinc, vitamin D and how to actually absorb them."],
+              ["⚖️", "The Right Amount by Age", "Exactly how much to serve — no more over or underfeeding."],
+              ["🥩", "Introducing Protein Safely", "Meat, eggs, legumes and fish, step by step."],
+              ["💧", "How & When to Offer Water", "The right age and method, without cutting milk intake."],
+              ["🕐", "When to Introduce Each Food", "A complete month-by-month first-foods timeline."],
+              ["🚫", "Foods to Avoid — and Why", "The full safety list with the real risk behind each one."],
+              ["👀", "Spotting Signs of Readiness", "Read your baby's own cues instead of a generic chart."],
+              ["❌", "Myths and Truths", "40+ myths dismantled, plainly and kindly."],
+            ].map(([icon, title, desc]) => (
+              <li key={title} className="flex gap-2">
+                <span className="shrink-0">{icon}</span>
+                <span>
+                  <span className="font-bold text-foreground">{title}</span> — {desc}
+                </span>
+              </li>
+            ))}
+          </ul>
+
           <Button
             onClick={() => generateHandbookPdf()}
             className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-full py-5 shadow-md flex items-center justify-center gap-2"
