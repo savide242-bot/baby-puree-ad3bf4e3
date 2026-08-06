@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 import type { Block, Chapter } from "@/data/handbook/types";
-import { chapters, chapterByNumber } from "@/data/handbook/chapters";
+import { chapterByNumber } from "@/data/handbook/chapters";
 import { parts } from "@/data/handbook/parts";
 
 
@@ -404,7 +404,7 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8.4);
   setText(ACCENT_DEEP);
-  doc.text("10 CHAPTERS   |   AGE-BY-AGE PLANS   |   EXPERT-BACKED", PW / 2, 271, { align: "center" });
+  doc.text("10 PARTS   |   21 CHAPTERS   |   EXPERT-BACKED", PW / 2, 271, { align: "center" });
 
   /* ---------------- copyright ---------------- */
 
