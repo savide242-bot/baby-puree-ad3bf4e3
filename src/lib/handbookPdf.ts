@@ -645,7 +645,7 @@ export async function buildHandbookDoc(): Promise<jsPDF> {
     entryPages.push(doc.getNumberOfPages());
     runningTitle = ch.title;
 
-    const hero = ch.image ? img[ch.image] : img[e.part.image];
+    const hero = ch.image && ch.image !== e.part.image ? img[ch.image] : undefined;
     if (hero) {
       doc.addImage(hero, "JPEG", 0, 0, PW, 118, undefined, "FAST");
       setFill(CREAM);
