@@ -132,6 +132,9 @@ export async function buildIndependenceDoc(): Promise<jsPDF> {
     setText(color);
     wrap(text, CW).forEach((l) => {
       need(lead);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(size);
+      setText(color);
       doc.text(l, M, y);
       y += lead;
     });
