@@ -91,7 +91,8 @@ export async function buildIndependenceDoc(): Promise<jsPDF> {
     doc.setFontSize(7);
     setText(MUTED);
     doc.text(BOOK_TITLE, M, 15);
-    doc.text(runningTitle.toUpperCase().slice(0, 42), PW - M, 15, { align: "right" });
+    const rt = runningTitle.toUpperCase();
+    doc.text(rt.length > 42 ? rt.slice(0, 40).trimEnd() + "…" : rt, PW - M, 15, { align: "right" });
     setDraw(LINE);
     doc.setLineWidth(0.2);
     doc.line(M, 18.5, PW - M, 18.5);
