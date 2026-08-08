@@ -233,9 +233,12 @@ export async function buildIndependenceDoc(): Promise<jsPDF> {
     drawHead();
 
     rows.forEach((row, ri) => {
-      doc.setFont("helvetica", "normal");
       doc.setFontSize(8.2);
-      const cellLines = row.map((c, i) => wrap(c || "", colW[i] - 5));
+      const cellLines = row.map((c, i) => {
+        doc.setFont("helvetica", i === 0 ? "bold" : "normal");
+        return wrap(c || "", colW[i] - 5);
+      });
+      doc.setFont("helvetica", "normal");
       const h = Math.max(...cellLines.map((l) => l.length)) * 4.1 + 3.6;
       if (y + h > BOTTOM) {
         newPage();
