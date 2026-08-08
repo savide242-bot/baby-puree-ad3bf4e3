@@ -4,6 +4,7 @@ import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gif
 import { Button } from "@/components/ui/button";
 import DiscountPopup from "@/components/DiscountPopup";
 import { generateHandbookPdf } from "@/lib/handbookPdf";
+import { generateIndependencePdf } from "@/lib/independencePdf";
 
 const Index = () => {
   return (
@@ -187,6 +188,53 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      {/* Independence Ebook Export */}
+      <section className="px-4 pb-4">
+        <div className="bg-gradient-to-br from-orange-100 via-amber-100 to-orange-50 rounded-2xl p-4 border-2 border-orange-300 shadow-lg">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Sparkles className="w-4 h-4 text-orange-700" />
+            <p className="text-[10px] uppercase tracking-wider text-orange-800 font-bold">Bonus Ebook — Free Today</p>
+          </div>
+          <h3 className="text-base font-extrabold text-center text-foreground mb-1 leading-tight">
+            Teach Your Baby to Eat Independently
+          </h3>
+          <p className="text-[11px] text-center text-foreground/80 mb-3 leading-snug">
+            Help your baby eat independently — with confidence. Imagine your baby happily picking up food, exploring new flavors and building healthy habits from the very beginning, while you stay calm at every meal.
+          </p>
+          <ul className="text-[10.5px] text-foreground/80 leading-snug space-y-1.5 mb-3">
+            {[
+              ["🍼", "Readiness, Decoded", "The exact signs that say your baby is ready to lead — no guessing."],
+              ["🪑", "The Perfect Setup", "Chair, posture, plates, spoons and open cups that speed everything up."],
+              ["🤏", "The Grasp Ladder", "Cut every food to the shape your baby's hands can actually manage."],
+              ["🥄", "Spoon, Fork & Chewing", "From pre-loaded spoons to real textures, stage by stage."],
+              ["🛟", "Gagging vs Choking", "Tell them apart instantly, plus the full response protocol."],
+              ["🥜", "Allergens Safely", "How to serve all 9 allergens to a self-feeder, on schedule."],
+              ["🧠", "No More Battles", "Word-for-word scripts for refusal, throwing and picky phases."],
+              ["📅", "The 90-Day Plan", "Twelve weeks from first fistful to eating the family meal alone."],
+            ].map(([icon, title, desc]) => (
+              <li key={title} className="flex gap-2">
+                <span className="shrink-0">{icon}</span>
+                <span>
+                  <span className="font-bold text-foreground">{title}</span> — {desc}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <Button
+            onClick={() => generateIndependencePdf()}
+            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-full py-5 shadow-md flex items-center justify-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Download the Independence Ebook (PDF)
+          </Button>
+          <p className="text-center text-[9px] text-muted-foreground mt-2">
+            Instant download • No email required
+          </p>
+        </div>
+      </section>
+
 
 
 
