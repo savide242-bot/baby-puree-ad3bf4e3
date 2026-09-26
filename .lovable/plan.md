@@ -1,63 +1,48 @@
+# Acervo Bordando com Fé — plano do novo eBook
 
-## Goal
+## Objetivo
 
-Replace the current single-recipe PDF with a professional multi-page **lead-magnet ebook** in English, exportable as a beautiful PDF that mirrors the uploaded reference layout exactly. It must feel premium so readers trust the paid product.
+Substituir o segundo download atual por um eBook premium em português chamado **Acervo Bordando com Fé**, mantendo intactos o **Complete Baby Nutrition Handbook** e o respectivo botão.
 
-## Ebook structure (all English)
+O texto anexado será usado apenas como especificação do produto. Preços, depoimentos, checkout, perguntas frequentes e demais elementos de venda serão ignorados.
 
-1. **Cover page** — brand title, tagline ("Healthy, Easy Recipes for Babies 6+ Months"), subtle amber/orange visuals. No recipe count mentioned.
-2. **Introduction page** — warm welcome from BabyBites, why 6+ months matters, how to use the ebook, safety reminders, tips for picky eaters.
-3. **10 recipe pages** — one recipe per page, following the uploaded model exactly:
-   - Top header bar with **food type** (e.g., Breakfast, Snack, Finger Food, Lunch, Dinner) + recipe title + category/age
-   - Meta row: Prep time / Cook time / Cooling / Servings
-   - Short intro sentence under meta
-   - **Ingredients** (orange section header)
-   - **Instructions** (blue section header, numbered)
-   - **Nutritional Benefits** (green section header, checkmarks)
-   - **Nutritional Information (per serving)** (purple section header, table: calories, protein, carbs, fats, key vitamins & minerals)
-   - **Safety Notes**, **Storage Notes**, **Servings by Age**, **Variations** (colored callout boxes)
-   - Tip line at bottom
-   - Page number bottom-right
-4. **Page 5 bonus CTA** — small footer band on recipe 5: "Get 100+ Healthy & Nutritious Recipes for My Baby →" linking to `https://page.babybites.space/`.
-5. **Final page (Demo Ebook CTA)** — headline: "This is just a taste." Body copy explaining it's a demo, that the full recipe book has 100+ healthy, easy recipes for every occasion, packed persuasion (scarcity, social proof, mom-to-mom voice, benefit stacking, risk reversal), big CTA button → `https://page.babybites.space/`.
+## Entregável
 
-## The 10 recipes (all 6+ months, easy, ≤15 min, no purées)
+Um PDF A4 pronto para baixar e imprimir, com acabamento editorial e conteúdo realmente utilizável:
 
-Diverse food types shown in the top header of each page:
+- Capa, apresentação, índice visual e instruções de impressão.
+- **100 riscos católicos originais**, um por página, em traço preto limpo e alta definição.
+- Cada risco terá título, categoria, indicação de aplicação, escala de referência e versões de tamanho orientadas para impressão.
+- Organização por cinco coleções:
+  1. Nossa Senhora — Aparecida, Fátima, das Graças, Desatadora de Nós, Maria em perfil e com o Menino.
+  2. Sagrado Coração e Cristo — corações, cruzes, face de Cristo e ornamentos florais.
+  3. Divino e símbolos da fé — Espírito Santo, pomba, cálice, hóstia, lírios, terços e medalhas.
+  4. Frases e orações — Ave Maria, Jesus eu confio em Vós, Salve Rainha e bênçãos curtas.
+  5. Monogramas e molduras — símbolos marianos, iniciais, cantoneiras e barrados.
 
-| # | Type | Recipe |
-|---|------|--------|
-| 1 | Breakfast | Banana Oat Pancakes |
-| 2 | Finger Food | Sweet Potato & Cheese Bites |
-| 3 | Snack | Avocado Toast Fingers |
-| 4 | Breakfast | Baby Scrambled Eggs with Spinach |
-| 5 | Finger Food | Broccoli & Cheese Mini Muffins |
-| 6 | Lunch | Soft Chicken & Carrot Meatballs |
-| 7 | Snack | Apple & Cinnamon Oat Bites |
-| 8 | Lunch | Salmon & Sweet Potato Cakes |
-| 9 | Dinner | Zucchini & Cheese Fritters |
-| 10 | Snack | Yogurt & Berry Fruit Cups |
+## Bônus completos
 
-Each recipe gets: ingredients, instructions, nutritional benefits, nutritional info (calories/protein/carbs/fats/vitamins), safety notes, storage notes, servings by age (6–8 mo / 9–12 mo / 12+ mo), variations, tip.
+- **Guia de transferência:** carbono, mesa de luz/janela, ferro e alinhavo; materiais, preparação, passo a passo, comparação por tecido e solução de problemas.
+- **Paletas católicas:** combinações marianas, Sagrado Coração, Divino Espírito Santo, litúrgicas e neutras, com códigos de linha e orientação de uso.
+- **Frases para bordar:** páginas tipográficas prontas para imprimir e transferir, em diferentes formatos e composições.
+- **Etiquetas religiosas:** modelos para assinatura, encomendas, presentes e peças devocionais.
 
-## Technical details
+## Direção visual
 
-- Rewrite `src/hooks/useRecipePdf.ts` (rename export flow, keep hook signature) to render all pages with `jsPDF`:
-  - Portrait A4, consistent margins matching reference
-  - Reusable helpers: `drawSectionHeader(color, label)`, `drawCallout(color, title, body)`, `drawMetaRow()`, `addPage()`
-  - Palette: orange (ingredients), blue (instructions), green (benefits), purple (nutrition table), pink (safety), amber (storage), teal (servings by age), light-amber (variations) — matching the reference's colored section bars
-  - Footer page numbers on every page except cover
-  - CTA links use `doc.link(...)` on the CTA buttons/rows
-- Update the trigger button label in `src/pages/Index.tsx` from "Download Recipe" (or equivalent) to something like **"Download Free Recipe Ebook"**; keep the existing button placement.
-- File name: `babybites-recipe-ebook.pdf`.
-- No new dependencies; continue using `jspdf`.
+- Estética de ateliê devocional elegante: papel marfim, vinho profundo, azul mariano e dourado discreto.
+- Capa e separadores com ilustrações editoriais; miolo dos riscos sem fundos ou distrações.
+- Tipografia clássica, margens generosas, numeração, referências e índice por categoria.
+- Desenhos vetoriais monocromáticos para permanecerem nítidos ao ampliar e imprimir.
 
-## Out of scope
+## Página e botão
 
-- No changes to the discount popup, hero, or other landing sections beyond the button label.
-- No image assets in the PDF (keep it clean, typographic, matching the reference which is text/color-block based).
+- Trocar somente o segundo bloco de download atual para apresentar o **Acervo Bordando com Fé**.
+- Atualizar título, benefícios e botão para português, explicando claramente os 100 riscos e os quatro bônus.
+- Manter o primeiro handbook e todo o restante da página sem alterações.
 
-## Files to change
+## Verificação
 
-- `src/hooks/useRecipePdf.ts` — full rewrite (10 recipes + cover + intro + final CTA page).
-- `src/pages/Index.tsx` — update the download button label/copy only.
+- Gerar o PDF completo pelo botão da página.
+- Converter todas as páginas em imagens para inspeção.
+- Corrigir cortes, sobreposições, margens, contraste e falhas nos desenhos.
+- Confirmar que os 100 riscos são distintos, legíveis e imprimíveis, que os bônus estão completos e que o download usa o novo nome de arquivo.
