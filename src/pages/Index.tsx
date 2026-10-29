@@ -1,45 +1,149 @@
 import appRecipes from "@/assets/app-recipes.png";
 import appShopping from "@/assets/app-shopping.png";
-import { Check, Clock, Brain, Leaf, Heart, Star, Sparkles, ShieldCheck, Zap, Gift, ChevronDown, Download, BookOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import DiscountPopup from "@/components/DiscountPopup";
-import { generateHandbookPdf } from "@/lib/handbookPdf";
-import { generateIndependencePdf } from "@/lib/independencePdf";
+import meatloavesAsset from "@/assets/recipe-meatloaves.webp.asset.json";
+import {
+  Check,
+  Clock,
+  Brain,
+  Leaf,
+  Heart,
+  Sparkles,
+  ShieldCheck,
+  Flame,
+  Snowflake,
+  Download,
+  Bell,
+  CalendarCheck,
+  Users,
+  ChevronRight,
+  MessageCircle,
+  Star,
+} from "lucide-react";
+
+const WHATSAPP_URL =
+  "https://chat.whatsapp.com/INkLCwAKV3zDpg5z5xJZDs?s=cl&p=i&mlu=4&ilr=4&iam=2";
+
+const LAUNCH_DATE = new Date("2026-11-30T00:00:00");
+
+const daysLeft = (() => {
+  const now = new Date();
+  const diff = LAUNCH_DATE.getTime() - now.getTime();
+  return Math.max(0, Math.ceil(diff / 86_400_000));
+})();
+
+const steps: { title: string; body: string; tip?: string }[] = [
+  {
+    title: "Grate the vegetables finely",
+    body: "Grate the carrot, zucchini and onion on the small holes of a box grater. The finer they are, the sweeter and softer the loaves taste — and the easier they are for little mouths.",
+    tip: "No grater? Pulse everything 5–6 times in a food processor.",
+  },
+  {
+    title: "Squeeze out the water",
+    body: "Wrap the grated zucchini in a clean kitchen towel and squeeze firmly over the sink for 20–30 seconds. Removing the water is the secret to loaves that hold together instead of turning mushy.",
+    tip: "Less water in = loaves that grip perfectly in tiny hands.",
+  },
+  {
+    title: "Build the mixture",
+    body: "In a large bowl, combine the ground turkey, squeezed veggies, egg, oats, cheese, parsley, garlic powder and a tiny pinch of salt. Mix with your hands just until everything comes together — about 40 seconds.",
+    tip: "Overmixing makes meatloaves dense. Stop as soon as it looks uniform.",
+  },
+  {
+    title: "Rest the mixture",
+    body: "Let the bowl sit for 10 minutes so the oats drink up the moisture. This small wait is what keeps the loaves juicy inside and sturdy outside.",
+  },
+  {
+    title: "Shape 12 mini loaves",
+    body: "With damp hands, shape the mixture into 12 small oval loaves (about 2 tablespoons each). Mini size means they bake fast, cool fast and fit perfectly in a baby's fist.",
+    tip: "Damp hands = no sticking, smoother tops.",
+  },
+  {
+    title: "Bake at 190°C (375°F)",
+    body: "Place the loaves on a parchment-lined tray, spacing them a finger apart. Bake for 20–22 minutes until the tops are golden-brown and the centers reach 74°C (165°F).",
+  },
+  {
+    title: "Rest, then serve at the right size",
+    body: "Cool 5 minutes — they firm up as they rest. Then serve in the shape your baby's stage needs (see the age guide below). Soft enough to squish between thumb and finger? Then it's ready.",
+  },
+];
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <DiscountPopup />
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative">
-        <div className="px-4 py-5 bg-amber-50">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">First Foods Recipe</p>
-          <h1 className="text-lg font-bold text-foreground leading-tight mb-1">
-            Creamy Avocado & Banana Baby Purée
+        <div className="relative overflow-hidden">
+          <img
+            src={meatloavesAsset.url}
+            alt="Golden baked turkey and veggie mini meatloaves on a white plate, one broken open showing soft carrot and zucchini flecks inside"
+            width={1408}
+            height={1920}
+            className="w-full h-[300px] object-cover"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-amber-50 via-transparent to-transparent" />
+          <div className="absolute top-3 left-4 right-4 flex justify-between items-center">
+            <span className="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-amber-700 shadow">
+              Savory Finger Food
+            </span>
+            <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow">
+              9+ months
+            </span>
+          </div>
+        </div>
+        <div className="px-4 pt-3 pb-4 bg-amber-50">
+          <h1 className="text-xl font-extrabold text-foreground leading-tight mb-1">
+            Turkey Veggie Mini Meatloaves
           </h1>
-          <p className="text-xs text-muted-foreground flex items-center gap-2">
-            <Clock className="w-3 h-3" />
-            5 min • No cooking • 6+ months
+          <p className="text-xs text-muted-foreground mb-3 leading-snug">
+            Tender, protein-packed mini loaves with sweet carrot and zucchini
+            baked right in. Golden outside, soft inside — made for little hands.
           </p>
+          <div className="grid grid-cols-4 gap-2 text-center">
+            {[
+              { icon: Clock, label: "Prep", value: "10 min" },
+              { icon: Flame, label: "Bake", value: "22 min" },
+              { icon: Users, label: "Makes", value: "12" },
+              { icon: Snowflake, label: "Freezes", value: "Yes" },
+            ].map(({ icon: Icon, label, value }) => (
+              <div
+                key={label}
+                className="bg-white rounded-lg border border-amber-200 py-2"
+              >
+                <Icon className="w-3.5 h-3.5 mx-auto text-amber-600 mb-0.5" />
+                <p className="text-[9px] text-muted-foreground uppercase tracking-wide">
+                  {label}
+                </p>
+                <p className="text-[11px] font-bold text-foreground">{value}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Recipe Benefits */}
+      {/* Why it works */}
       <section className="px-4 py-4">
-        <div className="grid grid-cols-3 gap-2 text-center">
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Brain className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Brain Dev</p>
-          </div>
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Leaf className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Healthy Fats</p>
-          </div>
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200">
-            <Heart className="w-4 h-4 mx-auto text-amber-600 mb-1" />
-            <p className="text-[9px] text-amber-700 font-medium">Potassium</p>
-          </div>
+        <div className="grid grid-cols-4 gap-2 text-center">
+          {[
+            { icon: Brain, label: "Brain Fats" },
+            { icon: Leaf, label: "Hidden Veggies" },
+            { icon: Heart, label: "Iron-Rich" },
+            { icon: Sparkles, label: "Grab & Go" },
+          ].map(({ icon: Icon, label }) => (
+            <div
+              key={label}
+              className="bg-gradient-to-br from-amber-50 to-orange-50 p-2 rounded-lg border border-amber-200"
+            >
+              <Icon className="w-4 h-4 mx-auto text-amber-600 mb-1" />
+              <p className="text-[9px] text-amber-700 font-medium">{label}</p>
+            </div>
+          ))}
         </div>
+        <p className="text-xs text-foreground/80 leading-relaxed mt-3">
+          Turkey brings the iron babies need for brain development, while carrot
+          and zucchini melt into sweetness — most toddlers never notice the
+          vegetables. One batch covers lunch, dinner and a week of freezer
+          backups.
+        </p>
       </section>
 
       {/* Ingredients */}
@@ -47,399 +151,301 @@ const Index = () => {
         <h2 className="text-sm font-bold text-foreground mb-2">Ingredients</h2>
         <ul className="space-y-1.5">
           {[
-            "1/2 ripe avocado (healthy fats for brain development)",
-            "1/2 ripe banana (natural sweetness + potassium)",
-            "1-2 tbsp breast milk or formula (creamy texture)",
-            "Tiny squeeze of lemon (keeps color fresh, optional)",
+            "500 g (1 lb) ground turkey (or chicken)",
+            "1 medium carrot, finely grated",
+            "1 small zucchini, grated and squeezed dry",
+            "½ small onion, finely grated",
+            "1 egg (binder)",
+            "60 g (½ cup) rolled oats — or 40 g breadcrumbs",
+            "30 g (¼ cup) mild grated cheese, e.g. mozzarella",
+            "1 tbsp chopped parsley (optional)",
+            "¼ tsp garlic powder",
+            "Tiny pinch of salt — and that's it",
           ].map((item, i) => (
-            <li key={i} className="flex items-center gap-2 text-xs text-foreground">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
+            <li
+              key={i}
+              className="flex items-start gap-2 text-xs text-foreground"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0 mt-1.5" />
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-2 bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-[11px] text-foreground/80 flex gap-2">
+          <ShieldCheck className="w-4 h-4 text-amber-600 flex-shrink-0" />
+          <span>
+            Egg allergy? Swap the egg for 2 tbsp extra oats plus 2 tbsp milk.
+          </span>
+        </div>
+      </section>
+
+      {/* Step by step */}
+      <section className="px-4 py-3">
+        <h2 className="text-sm font-bold text-foreground mb-2">
+          Step by Step
+        </h2>
+        <ol className="space-y-3">
+          {steps.map((step, i) => (
+            <li key={i} className="flex gap-3">
+              <span className="w-6 h-6 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 text-white flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5 shadow-sm">
+                {i + 1}
+              </span>
+              <div className="flex-1">
+                <p className="text-xs font-bold text-foreground leading-snug">
+                  {step.title}
+                </p>
+                <p className="text-[11px] text-foreground/75 leading-relaxed mt-0.5">
+                  {step.body}
+                </p>
+                {step.tip && (
+                  <p className="text-[10.5px] text-amber-700 bg-amber-50 border border-amber-100 rounded-md px-2 py-1 mt-1.5 leading-snug">
+                    💡 {step.tip}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Servings by age */}
+      <section className="px-4 py-3">
+        <h2 className="text-sm font-bold text-foreground mb-2">
+          Serving by Age
+        </h2>
+        <div className="space-y-2">
+          {[
+            {
+              age: "9–12 mo",
+              text: "Cut each loaf into 2–3 thick strips. The rounded shapes are easy to grip and to gum.",
+            },
+            {
+              age: "12–18 mo",
+              text: "Serve a whole mini loaf. It's soft enough to take confident bites.",
+            },
+            {
+              age: "6–8 mo",
+              text: "Offer mashed or crumbled onto a pre-loaded spoon — the flavor is perfect even before self-feeding.",
+            },
+          ].map((row) => (
+            <div
+              key={row.age}
+              className="flex gap-3 bg-white border border-amber-100 rounded-lg p-2.5"
+            >
+              <span className="text-[10px] font-bold text-white bg-amber-500 rounded-full px-2 py-1 h-fit flex-shrink-0">
+                {row.age}
+              </span>
+              <p className="text-[11px] text-foreground/80 leading-snug">
+                {row.text}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[11px] text-muted-foreground mt-3 flex gap-2">
+          <ShieldCheck className="w-4 h-4 flex-shrink-0" />
+          <span>
+            Always check the internal temperature has reached 74°C (165°F), and
+            let loaves cool until they squish easily — never serve hot from the
+            oven.
+          </span>
+        </p>
+      </section>
+
+      {/* Nutrition */}
+      <section className="px-4 py-3">
+        <h2 className="text-sm font-bold text-foreground mb-2">
+          🧡 Why Moms Love It
+        </h2>
+        <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg p-3 border border-amber-200">
+          <ul className="space-y-2 text-[11px] text-foreground">
+            <li>
+              <strong>Iron &amp; Protein</strong> — turkey fuels brain growth
+              and keeps energy steady between naps
+            </li>
+            <li>
+              <strong>Vitamin A</strong> — carrot supports eyes and immunity
+            </li>
+            <li>
+              <strong>Gentle Fiber</strong> — zucchini and oats keep digestion
+              happy
+            </li>
+            <li>
+              <strong>No sugar, no filler</strong> — real food you can see and
+              name
+            </li>
+            <li>
+              <strong>Batch-friendly</strong> — one tray becomes four meals
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Storage */}
+      <section className="px-4 py-3">
+        <h2 className="text-sm font-bold text-foreground mb-1">Storage</h2>
+        <ul className="space-y-1.5">
+          {[
+            "Fridge: airtight container, up to 3 days.",
+            "Freezer: freeze on a tray, then bag — up to 2 months.",
+            "Reheat: steam or microwave until warmed through, then cool to squishy before serving.",
+          ].map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-2 text-[11px] text-muted-foreground"
+            >
+              <Snowflake className="w-3.5 h-3.5 text-amber-600 flex-shrink-0 mt-0.5" />
               {item}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* Instructions */}
-      <section className="px-4 py-3">
-        <h2 className="text-sm font-bold text-foreground mb-2">Instructions</h2>
-        <ol className="space-y-2">
-          {[
-            "Scoop the ripe avocado flesh into a bowl",
-            "Peel and slice the banana on top",
-            "Add a squeeze of lemon to keep the color bright",
-            "Mash with a fork or blend until silky smooth",
-            "Add breast milk or formula slowly until creamy",
-            "Serve fresh and watch baby smile!",
-          ].map((step, i) => (
-            <li key={i} className="flex gap-2 text-xs text-foreground">
-              <span className="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-                {i + 1}
-              </span>
-              {step}
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* Why Babies Love It */}
-      <section className="px-4 py-3">
-        <h2 className="text-sm font-bold text-foreground mb-2">Why Babies Love It</h2>
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-3 space-y-1.5 border border-amber-100">
-          {[
-            "Buttery smooth texture babies can't resist",
-            "Naturally sweet — zero added sugar",
-            "Ready in 5 minutes, no cooking required",
-            "Perfect creamy first food for tiny tummies",
-          ].map((benefit, i) => (
-            <p key={i} className="flex items-center gap-2 text-[11px] text-foreground">
-              <Check className="w-3 h-3 text-amber-600 flex-shrink-0" />
-              {benefit}
-            </p>
-          ))}
-        </div>
-      </section>
-
-      {/* Health Benefits */}
-      <section className="px-4 py-3">
-        <h2 className="text-sm font-bold text-foreground mb-2">🧡 Health Benefits</h2>
-        <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg p-3 border border-amber-200">
-          <ul className="space-y-2 text-[11px] text-foreground">
-            <li><strong>Healthy Fats</strong> — Avocado is loaded with brain-building omega fats</li>
-            <li><strong>Potassium</strong> — More than a banana alone, supports heart & muscles</li>
-            <li><strong>Fiber</strong> — Keeps baby's digestion smooth and gentle</li>
-            <li><strong>Vitamin E & K</strong> — Boosts immunity and healthy growth</li>
-            <li><strong>Folate</strong> — Essential for rapid cell development</li>
-          </ul>
-        </div>
-
-        {/* Scroll Indicator - Gift Tease */}
-        <div className="mt-4 flex flex-col items-center text-center animate-fade-in">
-          <div className="relative bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 text-white rounded-2xl px-4 py-3 shadow-lg max-w-[320px]">
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <Gift className="w-4 h-4" />
-              <p className="text-[11px] font-bold uppercase tracking-wide">Surprise Below!</p>
-              <Gift className="w-4 h-4" />
-            </div>
-            <p className="text-[11px] leading-snug font-medium">
-              Keep scrolling to unlock a special little gift we left just for you 🎁
-            </p>
-          </div>
-          <div className="mt-2 flex flex-col items-center">
-            <ChevronDown className="w-5 h-5 text-amber-600 animate-bounce" style={{ animationDelay: "0s" }} />
-            <ChevronDown className="w-5 h-5 text-amber-500 -mt-3 animate-bounce" style={{ animationDelay: "0.15s" }} />
-            <ChevronDown className="w-5 h-5 text-amber-400 -mt-3 animate-bounce" style={{ animationDelay: "0.3s" }} />
-          </div>
-        </div>
-      </section>
-
-      {/* Storage Tips */}
-      <section className="px-4 py-3">
-        <h2 className="text-sm font-bold text-foreground mb-1">Storage</h2>
-        <p className="text-[11px] text-muted-foreground">
-          Best served fresh! Refrigerate in an airtight container with a squeeze of lemon for up to 24 hours. Not recommended for freezing — texture changes once thawed.
-        </p>
-      </section>
-
-      {/* Premium Handbook Export */}
-      <section className="px-4 py-4">
-        <div className="bg-gradient-to-br from-amber-100 via-orange-100 to-amber-50 rounded-2xl p-4 border-2 border-amber-300 shadow-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <BookOpen className="w-4 h-4 text-amber-700" />
-            <p className="text-[10px] uppercase tracking-wider text-amber-800 font-bold">Premium Ebook — Free Today</p>
-          </div>
-          <h3 className="text-base font-extrabold text-center text-foreground mb-1 leading-tight">
-            The Complete Baby Nutrition Handbook
-          </h3>
-          <p className="text-[11px] text-center text-foreground/80 mb-3 leading-snug">
-            242 pages, 10 illustrated parts. Here is exactly what you are getting:
-          </p>
-          <ul className="text-[10.5px] text-foreground/80 leading-snug space-y-1.5 mb-3">
-            {[
-              ["🍼", "Nutritional Needs by Age", "The exact nutrients your baby needs at 6, 9, 12 months and beyond."],
-              ["🍽️", "Building a Balanced Plate", "A simple, repeatable method so balance becomes automatic."],
-              ["💊", "The Vitamins & Minerals That Matter Most", "Iron, zinc, vitamin D and how to actually absorb them."],
-              ["⚖️", "The Right Amount by Age", "Exactly how much to serve — no more over or underfeeding."],
-              ["🥩", "Introducing Protein Safely", "Meat, eggs, legumes and fish, step by step."],
-              ["💧", "How & When to Offer Water", "The right age and method, without cutting milk intake."],
-              ["🕐", "When to Introduce Each Food", "A complete month-by-month first-foods timeline."],
-              ["🚫", "Foods to Avoid — and Why", "The full safety list with the real risk behind each one."],
-              ["👀", "Spotting Signs of Readiness", "Read your baby's own cues instead of a generic chart."],
-              ["❌", "Myths and Truths", "40+ myths dismantled, plainly and kindly."],
-            ].map(([icon, title, desc]) => (
-              <li key={title} className="flex gap-2">
-                <span className="shrink-0">{icon}</span>
-                <span>
-                  <span className="font-bold text-foreground">{title}</span> — {desc}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <Button
-            onClick={() => generateHandbookPdf()}
-            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-full py-5 shadow-md flex items-center justify-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Download the Handbook (PDF)
-          </Button>
-          <p className="text-center text-[9px] text-muted-foreground mt-2">
-            Instant download • No email required
-          </p>
-        </div>
-      </section>
-
-      {/* Independence Ebook Export */}
-      <section className="px-4 pb-4">
-        <div className="bg-gradient-to-br from-orange-100 via-amber-100 to-orange-50 rounded-2xl p-4 border-2 border-orange-300 shadow-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Sparkles className="w-4 h-4 text-orange-700" />
-            <p className="text-[10px] uppercase tracking-wider text-orange-800 font-bold">Bonus Ebook — Free Today</p>
-          </div>
-          <h3 className="text-base font-extrabold text-center text-foreground mb-1 leading-tight">
-            Teach Your Baby to Eat Independently
-          </h3>
-          <p className="text-[11px] text-center text-foreground/80 mb-3 leading-snug">
-            Help your baby eat independently — with confidence. Imagine your baby happily picking up food, exploring new flavors and building healthy habits from the very beginning, while you stay calm at every meal.
-          </p>
-          <ul className="text-[10.5px] text-foreground/80 leading-snug space-y-1.5 mb-3">
-            {[
-              ["🍼", "Readiness, Decoded", "The exact signs that say your baby is ready to lead — no guessing."],
-              ["🪑", "The Perfect Setup", "Chair, posture, plates, spoons and open cups that speed everything up."],
-              ["🤏", "The Grasp Ladder", "Cut every food to the shape your baby's hands can actually manage."],
-              ["🥄", "Spoon, Fork & Chewing", "From pre-loaded spoons to real textures, stage by stage."],
-              ["🛟", "Gagging vs Choking", "Tell them apart instantly, plus the full response protocol."],
-              ["🥜", "Allergens Safely", "How to serve all 9 allergens to a self-feeder, on schedule."],
-              ["🧠", "No More Battles", "Word-for-word scripts for refusal, throwing and picky phases."],
-              ["📅", "The 90-Day Plan", "Twelve weeks from first fistful to eating the family meal alone."],
-            ].map(([icon, title, desc]) => (
-              <li key={title} className="flex gap-2">
-                <span className="shrink-0">{icon}</span>
-                <span>
-                  <span className="font-bold text-foreground">{title}</span> — {desc}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <Button
-            onClick={() => generateIndependencePdf()}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-full py-5 shadow-md flex items-center justify-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Download the Independence Ebook (PDF)
-          </Button>
-          <p className="text-center text-[9px] text-muted-foreground mt-2">
-            Instant download • No email required
-          </p>
-        </div>
-      </section>
-
-
-
-
-
-
-      {/* Age Guide Section */}
-      <section className="px-4 py-5 bg-gradient-to-b from-amber-50 to-orange-50">
-        <div className="text-center mb-5">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">Feeding Guide</p>
-          <h2 className="text-base font-bold text-foreground leading-tight">
-            When to Introduce Each Texture
-          </h2>
-        </div>
-        
-        <div className="relative">
-          <div className="absolute left-[22px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-orange-300 via-green-300 via-blue-300 to-purple-300" />
-          
-          <div className="space-y-4">
-            <div className="relative flex gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
-                <span className="text-white text-[10px] font-bold">6+</span>
-              </div>
-              <div className="flex-1 bg-card rounded-xl p-3 border border-orange-200 shadow-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xs font-bold text-foreground">Smooth Purees</h3>
-                  <div className="flex gap-0.5">
-                    <div className="w-6 h-2 rounded-full bg-orange-400" />
-                    <div className="w-6 h-2 rounded-full bg-orange-100" />
-                    <div className="w-6 h-2 rounded-full bg-orange-100" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  🥑 Avocado, banana, sweet potato, carrot — blended silky smooth
-                </p>
-              </div>
-            </div>
-
-            <div className="relative flex gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
-                <span className="text-white text-[10px] font-bold">7-8</span>
-              </div>
-              <div className="flex-1 bg-card rounded-xl p-3 border border-green-200 shadow-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xs font-bold text-foreground">Soft Mashes</h3>
-                  <div className="flex gap-0.5">
-                    <div className="w-6 h-2 rounded-full bg-green-400" />
-                    <div className="w-6 h-2 rounded-full bg-green-400" />
-                    <div className="w-6 h-2 rounded-full bg-green-100" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  🥦 Broccoli, peas, chicken, yogurt — mashed with small soft lumps
-                </p>
-              </div>
-            </div>
-
-            <div className="relative flex gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
-                <span className="text-white text-[10px] font-bold">9-11</span>
-              </div>
-              <div className="flex-1 bg-card rounded-xl p-3 border border-blue-200 shadow-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xs font-bold text-foreground">Finger Foods</h3>
-                  <div className="flex gap-0.5">
-                    <div className="w-6 h-2 rounded-full bg-blue-400" />
-                    <div className="w-6 h-2 rounded-full bg-blue-400" />
-                    <div className="w-6 h-2 rounded-full bg-blue-300" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  🍝 Pasta, soft fruits, eggs, cheese — soft chunks for self-feeding
-                </p>
-              </div>
-            </div>
-
-            <div className="relative flex gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center shadow-md z-10 flex-shrink-0">
-                <span className="text-white text-[10px] font-bold">12+</span>
-              </div>
-              <div className="flex-1 bg-card rounded-xl p-3 border border-purple-200 shadow-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xs font-bold text-foreground">Family Meals</h3>
-                  <div className="flex gap-0.5">
-                    <div className="w-6 h-2 rounded-full bg-purple-400" />
-                    <div className="w-6 h-2 rounded-full bg-purple-400" />
-                    <div className="w-6 h-2 rounded-full bg-purple-400" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  🍎 Most foods! Cut small, avoid honey & whole nuts
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="border-b border-amber-200" />
-
-      {/* PERSUASIVE APP PROMO / CTA SECTION */}
-      <section className="px-4 py-7 bg-gradient-to-b from-amber-50 via-orange-50 to-orange-100">
-        {/* Urgency badge */}
-        <div className="flex justify-center mb-3">
-          <span className="inline-flex items-center gap-1 bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md animate-pulse">
-            <Zap className="w-3 h-3" /> Limited Time Offer
-          </span>
-        </div>
-
-        <div className="text-center mb-4">
-          <p className="text-[10px] uppercase tracking-wider text-amber-700 font-semibold mb-1">
-            Join 1,000+ Happy Moms
-          </p>
-          <h2 className="text-xl font-extrabold text-foreground leading-tight">
-            Stop Stressing About<br/>What to Feed Your Baby
-          </h2>
-          <p className="text-[12px] text-foreground/80 mt-2 leading-snug">
-            Get <strong className="text-amber-700">300+ pediatrician-approved recipes</strong>, weekly meal plans, and a smart food scanner — all in one app.
-          </p>
-        </div>
-
-        {/* Star rating social proof */}
-        <div className="flex items-center justify-center gap-1 mb-3">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-          ))}
-          <span className="text-[11px] text-foreground/70 ml-1 font-medium">4.9/5 — 1,000+ reviews</span>
-        </div>
-
-        {/* App Screenshots */}
-        <div className="flex gap-2 justify-center mb-4">
-          <img 
-            src={appRecipes} 
-            alt="BabyBites App - Recipes" 
-            className="w-[45%] max-w-[160px] h-auto rounded-lg shadow-lg border border-amber-200"
-            loading="lazy"
-          />
-          <img 
-            src={appShopping} 
-            alt="BabyBites App - Shopping List" 
-            className="w-[45%] max-w-[160px] h-auto rounded-lg shadow-lg border border-amber-200"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Testimonial */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 mb-4 border border-amber-200 shadow-sm">
-          <div className="flex gap-0.5 mb-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <p className="text-[11px] text-foreground italic leading-snug mb-1">
-            "I used to panic at every meal. Now I open the app, pick a recipe, and my baby actually eats it. Total game changer."
-          </p>
-          <p className="text-[10px] text-muted-foreground font-medium">— Sarah M., mom of 8-month-old</p>
-        </div>
-
-        {/* What you get */}
-        <div className="bg-white/60 rounded-xl p-3 mb-4 border border-amber-200">
-          <p className="text-[11px] font-bold text-amber-800 mb-2 text-center uppercase tracking-wide">What You Get Today</p>
-          <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
-            {[
-              "300+ healthy recipes",
-              "Weekly meal planner",
-              "Food safety scanner",
-              "Growth tracker",
-              "Smart shopping list",
-              "Mom community",
-              "Allergy tracker",
-              "Expert nutrition tips",
-            ].map((feature, i) => (
-              <p key={i} className="flex items-center gap-1.5 text-[10px] text-foreground font-medium">
-                <Check className="w-3 h-3 text-green-600 flex-shrink-0" />
-                {feature}
+      {/* ================= APP LAUNCH ================= */}
+      <section id="launch" className="px-4 py-5 bg-gradient-to-b from-orange-50 to-amber-50">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 p-5 shadow-xl border-2 border-orange-400">
+          <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
+          <div className="absolute -bottom-14 -left-10 w-44 h-44 rounded-full bg-white/10" />
+          <div className="relative text-center">
+            <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur px-3 py-1 rounded-full mb-3">
+              <Bell className="w-3 h-3 text-white animate-pulse" />
+              <p className="text-[10px] font-bold uppercase tracking-wider text-white">
+                Big announcement
               </p>
-            ))}
+            </div>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-white/90 mb-1">
+              {daysLeft > 0 ? `${daysLeft} days to go` : "It's here!"}
+            </p>
+            <h2 className="text-2xl font-extrabold text-white leading-tight mb-2">
+              The BabyBites App
+              <br />
+              launches November 30
+            </h2>
+            <p className="text-[12px] text-white/90 leading-relaxed mb-4">
+              Recipes for babies, snacks and the whole family — with meal plans
+              and shopping lists that build themselves. If this mini meatloaf
+              won you over, imagine 300+ recipes like it, all in your pocket.
+            </p>
+
+            <div className="bg-white/15 backdrop-blur rounded-xl p-3 mb-4 text-left">
+              <ul className="space-y-2 text-[11.5px] text-white">
+                {[
+                  "300+ pediatrician-reviewed recipes, filtered by age",
+                  "Weekly meal plans and automatic shopping lists",
+                  "Food scanner, allergen tracker and serving-size guides",
+                  "From first purées to family dinners — one app for it all",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-3 mb-4 text-left">
+              <p className="text-[11px] font-bold text-orange-700 uppercase tracking-wide mb-1">
+                Do these 3 things before November 30
+              </p>
+              <ol className="space-y-1.5 text-[11px] text-foreground/85">
+                <li className="flex gap-2">
+                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                    1
+                  </span>
+                  <span>
+                    <strong>Save the date</strong> — set a reminder for Nov 30
+                    so you're there when doors open.
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                    2
+                  </span>
+                  <span>
+                    <strong>Get ready to move fast</strong> — founding members
+                    who join on day one will lock in the best terms. Put a
+                    little aside each week between now and then, so nothing
+                    holds you back.
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                    3
+                  </span>
+                  <span>
+                    <strong>Join the WhatsApp group</strong> — every detail,
+                    every date and every surprise will be shared there first.
+                  </span>
+                </li>
+              </ol>
+            </div>
+
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-white text-orange-600 font-extrabold rounded-full py-4 shadow-lg flex items-center justify-center gap-2 text-sm hover:bg-orange-50 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Not in the WhatsApp group yet? Join now
+              <ChevronRight className="w-4 h-4" />
+            </a>
+            <p className="text-[10px] text-white/80 mt-2">
+              Screenshots, videos and launch-day news drop in the group first 🔔
+            </p>
           </div>
         </div>
 
-        {/* Risk reversal */}
-        <div className="flex items-center justify-center gap-1.5 mb-3 text-[10px] text-foreground/70">
-          <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
-          <span><strong>100% free to try</strong> — no credit card required</span>
+        {/* Carousel */}
+        <div className="mt-4">
+          <div className="flex items-center gap-1.5 mb-2 px-1">
+            <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+            <p className="text-[10px] font-bold uppercase tracking-wider text-orange-700">
+              First look inside the app
+            </p>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {[
+              { img: appRecipes, label: "300+ recipes by age" },
+              { img: appShopping, label: "Auto shopping lists" },
+            ].map(({ img, label }) => (
+              <div
+                key={label}
+                className="snap-center flex-shrink-0 w-[260px] rounded-xl overflow-hidden border border-orange-200 bg-white shadow-md"
+              >
+                <img
+                  src={img}
+                  alt={label}
+                  className="w-full h-[300px] object-cover object-top"
+                  loading="lazy"
+                />
+                <p className="text-[10.5px] font-semibold text-foreground/80 px-3 py-2 flex items-center gap-1.5">
+                  <Star className="w-3 h-3 text-orange-500 flex-shrink-0" />
+                  {label}
+                </p>
+              </div>
+            ))}
+            <div className="snap-center flex-shrink-0 w-[200px] rounded-xl border border-dashed border-orange-300 bg-white/60 p-4 flex flex-col items-center justify-center text-center">
+              <CalendarCheck className="w-6 h-6 text-orange-500 mb-2" />
+              <p className="text-[11px] font-bold text-foreground/80 mb-1">
+                More screens coming
+              </p>
+              <p className="text-[10px] text-muted-foreground leading-snug">
+                New previews will be revealed in the WhatsApp group.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* CTA Button */}
-        <a 
-          href="https://babybitespage.lovable.app/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block"
-        >
-          <Button className="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hover:from-amber-600 hover:via-orange-600 hover:to-red-600 text-white font-extrabold text-base py-6 rounded-full shadow-2xl flex items-center justify-center gap-2 transform hover:scale-[1.02] transition-all">
-            <Sparkles className="w-4 h-4" />
-            Get Instant Access — Free
-          </Button>
-        </a>
-        <p className="text-center text-[10px] text-muted-foreground mt-2">
-          ⏱ Takes 30 seconds • Join thousands of moms today
+        <p className="text-center text-[10.5px] text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
+          <Download className="w-3.5 h-3.5" />
+          The app will be free to download on November 30 — details in the group
         </p>
       </section>
 
-      <footer className="px-4 py-4 text-center bg-amber-50">
-        <p className="text-[9px] text-muted-foreground">
-          © 2024 BabyBites. All rights reserved.
+      {/* Footer */}
+      <footer className="px-4 py-6 text-center">
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
+          Made with care for busy, loving parents. 🧡
         </p>
       </footer>
     </div>
