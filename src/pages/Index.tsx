@@ -1,6 +1,4 @@
-import appRecipes from "@/assets/app-recipes.png";
-import appShopping from "@/assets/app-shopping.png";
-import meatloavesAsset from "@/assets/recipe-meatloaves.webp.asset.json";
+import meatloavesImg from "@/assets/recipe-meatloaves.webp";
 import {
   Check,
   Clock,
@@ -18,6 +16,16 @@ import {
   ChevronRight,
   MessageCircle,
   Star,
+  Utensils,
+  Video,
+  Repeat,
+  Package,
+  TrendingUp,
+  CheckCircle2,
+  ArrowRight,
+  Shield,
+  Layers,
+  ChefHat,
 } from "lucide-react";
 
 const WHATSAPP_URL =
@@ -66,6 +74,49 @@ const steps: { title: string; body: string; tip?: string }[] = [
   },
 ];
 
+const appFeatures = [
+  {
+    icon: Utensils,
+    title: "300+ Recipes (6–36 Mo)",
+    text: "Age-adapted with pediatrician guidelines & texture stages",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Weekly Meal Planner & Feeds",
+    text: "Done-for-you menus with automated grocery shopping lists",
+  },
+  {
+    icon: Users,
+    title: "In-App Mom Community",
+    text: "Moms share real photos, feeding videos, wins & experiences",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Safe Allergen Tracker",
+    text: "Step-by-step introduction of top allergens & reaction log",
+  },
+  {
+    icon: Snowflake,
+    title: "Freezer Prep & Batch Cook",
+    text: "Cook once, freeze safely & ready in under 3 minutes",
+  },
+  {
+    icon: Package,
+    title: "Smart Pantry Helper",
+    text: "Cook nutritious meals with what you already have at home",
+  },
+  {
+    icon: Repeat,
+    title: "1-Tap Ingredient Swap",
+    text: "Safe substitutions for allergies or missing ingredients",
+  },
+  {
+    icon: TrendingUp,
+    title: "Growth & Milestones",
+    text: "Track chewing, self-feeding leaps & food variety score",
+  },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -73,7 +124,7 @@ const Index = () => {
       <section className="relative">
         <div className="relative overflow-hidden">
           <img
-            src={meatloavesAsset.url}
+            src={meatloavesImg}
             alt="Golden baked turkey and veggie mini meatloaves on a white plate, one broken open showing soft carrot and zucchini flecks inside"
             width={1408}
             height={1920}
@@ -154,12 +205,12 @@ const Index = () => {
             "500 g (1 lb) ground turkey (or chicken)",
             "1 medium carrot, finely grated",
             "1 small zucchini, grated and squeezed dry",
-            "½ small onion, finely grated",
+            "1/2 small onion, finely grated",
             "1 egg (binder)",
-            "60 g (½ cup) rolled oats — or 40 g breadcrumbs",
-            "30 g (¼ cup) mild grated cheese, e.g. mozzarella",
+            "60 g (1/2 cup) rolled oats — or 40 g breadcrumbs",
+            "30 g (1/4 cup) mild grated cheese, e.g. mozzarella",
             "1 tbsp chopped parsley (optional)",
-            "¼ tsp garlic powder",
+            "1/4 tsp garlic powder",
             "Tiny pinch of salt — and that's it",
           ].map((item, i) => (
             <li
@@ -301,145 +352,77 @@ const Index = () => {
       </section>
 
       {/* ================= APP LAUNCH ================= */}
-      <section id="launch" className="px-4 py-5 bg-gradient-to-b from-orange-50 to-amber-50">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 p-5 shadow-xl border-2 border-orange-400">
-          <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
-          <div className="absolute -bottom-14 -left-10 w-44 h-44 rounded-full bg-white/10" />
-          <div className="relative text-center">
-            <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur px-3 py-1 rounded-full mb-3">
-              <Bell className="w-3 h-3 text-white animate-pulse" />
-              <p className="text-[10px] font-bold uppercase tracking-wider text-white">
-                Big announcement
-              </p>
+      <section id="launch" className="px-4 py-5 bg-amber-50/50">
+        <div className="bg-white rounded-2xl border-2 border-amber-200 p-4 sm:p-5 shadow-sm">
+          {/* Header */}
+          <div className="text-center mb-3">
+            <div className="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide mb-1.5">
+              <Sparkles className="w-3 h-3 text-amber-600" />
+              <span>Official Launch • November 30</span>
             </div>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-white/90 mb-1">
-              {daysLeft > 0 ? `${daysLeft} days to go` : "It's here!"}
-            </p>
-            <h2 className="text-2xl font-extrabold text-white leading-tight mb-2">
+            <h2 className="text-xl font-extrabold text-foreground leading-tight">
               The BabyBites App
-              <br />
-              launches November 30
             </h2>
-            <p className="text-[12px] text-white/90 leading-relaxed mb-4">
-              Recipes for babies, snacks and the whole family — with meal plans
-              and shopping lists that build themselves. If this mini meatloaf
-              won you over, imagine 300+ recipes like it, all in your pocket.
+            <p className="text-[11.5px] text-muted-foreground leading-snug mt-0.5">
+              Everything you need to feed your baby from 6 to 36 months — in one single app.
             </p>
+          </div>
 
-            <div className="bg-white/15 backdrop-blur rounded-xl p-3 mb-4 text-left">
-              <ul className="space-y-2 text-[11.5px] text-white">
-                {[
-                  "300+ pediatrician-reviewed recipes, filtered by age",
-                  "Weekly meal plans and automatic shopping lists",
-                  "Food scanner, allergen tracker and serving-size guides",
-                  "From first purées to family dinners — one app for it all",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                    <span className="leading-snug">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Punchy Sales Feature Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3.5 text-left">
+            {appFeatures.map((feat) => {
+              const Icon = feat.icon;
+              return (
+                <div
+                  key={feat.title}
+                  className="flex items-start gap-2 p-2 rounded-lg bg-amber-50/60 border border-amber-100/80"
+                >
+                  <div className="w-6 h-6 rounded-md bg-amber-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[11.5px] font-bold text-foreground leading-tight">
+                      {feat.title}
+                    </p>
+                    <p className="text-[10.5px] text-muted-foreground leading-snug">
+                      {feat.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-            <div className="bg-white rounded-xl p-3 mb-4 text-left">
-              <p className="text-[11px] font-bold text-orange-700 uppercase tracking-wide mb-1">
-                Do these 3 things before November 30
-              </p>
-              <ol className="space-y-1.5 text-[11px] text-foreground/85">
-                <li className="flex gap-2">
-                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    1
-                  </span>
-                  <span>
-                    <strong>Save the date</strong> — set a reminder for Nov 30
-                    so you're there when doors open.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    2
-                  </span>
-                  <span>
-                    <strong>Get ready to move fast</strong> — founding members
-                    who join on day one will lock in the best terms. Put a
-                    little aside each week between now and then, so nothing
-                    holds you back.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="w-4 h-4 rounded-full bg-orange-500 text-white text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    3
-                  </span>
-                  <span>
-                    <strong>Join the WhatsApp group</strong> — every detail,
-                    every date and every surprise will be shared there first.
-                  </span>
-                </li>
-              </ol>
-            </div>
+          {/* Sales Highlight Banner */}
+          <div className="bg-amber-100/60 border border-amber-200 rounded-xl px-3 py-2 text-center text-[11px] font-semibold text-amber-900 mb-3">
+            ✨ 300+ recipes, meal planner, mom community &amp; smart tools — unified in ONE app.
+          </div>
 
+          {/* WhatsApp VIP Announcement Box */}
+          <div className="bg-gradient-to-br from-amber-50 via-white to-orange-50 rounded-xl p-3 border border-amber-200 text-center mb-2">
+            <p className="text-xs font-bold text-amber-900 mb-0.5">
+              Exclusive details &amp; download link drop in WhatsApp first 🔔
+            </p>
+            <p className="text-[11px] text-muted-foreground leading-snug mb-2.5">
+              Early app walkthrough videos, sneak peeks, and founding-member perks are shared strictly inside our VIP group.
+            </p>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-white text-orange-600 font-extrabold rounded-full py-4 shadow-lg flex items-center justify-center gap-2 text-sm hover:bg-orange-50 transition-colors"
+              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold rounded-xl py-3 px-4 shadow flex items-center justify-center gap-2 text-xs sm:text-sm transition-transform active:scale-[0.98]"
             >
-              <MessageCircle className="w-5 h-5" />
-              Not in the WhatsApp group yet? Join now
-              <ChevronRight className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Join the VIP WhatsApp Group</span>
+              <ChevronRight className="w-4 h-4 stroke-[3]" />
             </a>
-            <p className="text-[10px] text-white/80 mt-2">
-              Screenshots, videos and launch-day news drop in the group first 🔔
-            </p>
           </div>
-        </div>
 
-        {/* Carousel */}
-        <div className="mt-4">
-          <div className="flex items-center gap-1.5 mb-2 px-1">
-            <Sparkles className="w-3.5 h-3.5 text-orange-600" />
-            <p className="text-[10px] font-bold uppercase tracking-wider text-orange-700">
-              First look inside the app
-            </p>
-          </div>
-          <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {[
-              { img: appRecipes, label: "300+ recipes by age" },
-              { img: appShopping, label: "Auto shopping lists" },
-            ].map(({ img, label }) => (
-              <div
-                key={label}
-                className="snap-center flex-shrink-0 w-[260px] rounded-xl overflow-hidden border border-orange-200 bg-white shadow-md"
-              >
-                <img
-                  src={img}
-                  alt={label}
-                  className="w-full h-[300px] object-cover object-top"
-                  loading="lazy"
-                />
-                <p className="text-[10.5px] font-semibold text-foreground/80 px-3 py-2 flex items-center gap-1.5">
-                  <Star className="w-3 h-3 text-orange-500 flex-shrink-0" />
-                  {label}
-                </p>
-              </div>
-            ))}
-            <div className="snap-center flex-shrink-0 w-[200px] rounded-xl border border-dashed border-orange-300 bg-white/60 p-4 flex flex-col items-center justify-center text-center">
-              <CalendarCheck className="w-6 h-6 text-orange-500 mb-2" />
-              <p className="text-[11px] font-bold text-foreground/80 mb-1">
-                More screens coming
-              </p>
-              <p className="text-[10px] text-muted-foreground leading-snug">
-                New previews will be revealed in the WhatsApp group.
-              </p>
-            </div>
-          </div>
+          <p className="text-center text-[10.5px] text-muted-foreground flex items-center justify-center gap-1">
+            <Download className="w-3 h-3 text-amber-600" />
+            The app will be free to download on November 30 — details in the group
+          </p>
         </div>
-
-        <p className="text-center text-[10.5px] text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
-          <Download className="w-3.5 h-3.5" />
-          The app will be free to download on November 30 — details in the group
-        </p>
       </section>
 
       {/* Footer */}
